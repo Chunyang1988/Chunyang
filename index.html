@@ -28,18 +28,469 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h1>
-<a id="简介" class="anchor" href="#%E7%AE%80%E4%BB%8B" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>简介</h1>
+          <h2>
+<a id="android常用库" class="anchor" href="#android%E5%B8%B8%E7%94%A8%E5%BA%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Android常用库</h2>
 
-<p><a href="https://github.com/Chunyang1988cn/Chunyang/wiki/%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E5%BA%93">常用基本库</a></p>
+<p>网络：</p>
 
-<p><a href="https://github.com/Chunyang1988cn/Chunyang/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F">观察者模式</a></p>
+<p>a.Square出品</p>
 
-<p><a href="https://github.com/Chunyang1988cn/Chunyang/wiki/RxJava">RxJava</a></p>
+<p>1.<a href="http://square.github.io/retrofit/">retrofit</a></p>
 
-<p><a href="https://github.com/Chunyang1988cn/Chunyang/wiki/RxBus">RxBus</a></p>
+<p>2.<a href="http://square.github.io/okhttp/">OkHttp</a></p>
 
-<p><a href="https://github.com/Chunyang1988cn/Chunyang/wiki/EventBus">EventBus</a></p>
+<p>异步：</p>
+
+<p>1.<a href="https://github.com/ReactiveX/RxAndroid">RxAndroid</a>|<a href="https://github.com/ReactiveX/RxJava">RxJava</a></p>
+
+<p>2.Rx**例如RxPermissions、RxBinding</p>
+
+<p>通信：</p>
+
+<p>1.如果你用RxJava建议直接使用<a href="https://github.com/Chunyang1988cn/Chunyang/wiki/RxBus">RxBus</a>(不能算作库，只有简单几行代码）</p>
+
+<p>2.<a href="https://github.com/greenrobot/EventBus">EventBus</a></p>
+
+<p>3.<a href="http://square.github.io/otto/">Otto</a></p>
+
+<h1>
+<a id="观察者模式" class="anchor" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>观察者模式</h1>
+
+<h2>
+<a id="基本讲解" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E8%AE%B2%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本讲解</h2>
+
+<p>观察者模式简单说就是“发布”--“订阅”--“通知”--“更新”一种交互形式，是一种一对多的依赖关系，即一个“发布者”，可以有多个“订阅者”接受与更新数据。</p>
+
+<h3>
+<a id="案例讲解" class="anchor" href="#%E6%A1%88%E4%BE%8B%E8%AE%B2%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>案例讲解</h3>
+
+<p>按照当下流行公众号来讲解，例如你关注了一个公众号“微信运动”，他就提供发布信息的作用，也就是“发布者”，而我们关注的人，也就是“订阅者”，当“微信运动”发布消息的时候，我们所有关注人，都会收到消息，也就是“通知”“订阅者”，而我们收到信息后，进行了“更新”。</p>
+
+<h1>
+<a id="rxjava" class="anchor" href="#rxjava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RxJava</h1>
+
+<h2>
+<a id="基础" class="anchor" href="#%E5%9F%BA%E7%A1%80" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基础</h2>
+
+<p>RxJava究竟是什么呢，其实说简单的就是处理异步的，但是又很灵活，后续讲解就会明白了，他是一种观察者模式的异步处理，一说到观察者模式就会用到Observable、Subscriber。</p>
+
+<p>Observable发送消息，而Subscriber则用于消费消息。</p>
+
+<p>上文讲解的观察者模式，就说到了“发布”--“订阅”--“通知”--“更新”，你就可以理解Observable是用户“发布”消息的，而Subscriber用户“通知”消息的。</p>
+
+<h2>
+<a id="讲解" class="anchor" href="#%E8%AE%B2%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>讲解</h2>
+
+<h3>
+<a id="1创建observable" class="anchor" href="#1%E5%88%9B%E5%BB%BAobservable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.创建Observable</h3>
+
+<p>准备发布消息</p>
+
+<pre><code>    Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
+
+        @Override
+        public void call(Subscriber&lt;? super String&gt; subscriber) {
+            subscriber.onNext("onNext1");
+            subscriber.onNext("onNext2");
+            subscriber.onCompleted();
+        }
+    });
+</code></pre>
+
+<p>上面代码就是基本的创建方法，而Observable还提供了几个常用方式，例如：</p>
+
+<pre><code>    Observable.just("onNext1", "onNext2");
+</code></pre>
+
+<p>与</p>
+
+<pre><code>    Observable.from(new String[]{"onNext1", "onNext2"});
+</code></pre>
+
+<p>上面代码都是一个效果，返回都是Observable</p>
+
+<h3>
+<a id="2订阅subscribe" class="anchor" href="#2%E8%AE%A2%E9%98%85subscribe" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.订阅Subscribe</h3>
+
+<p>这里面就可以理解成上文所说的关注公众号的例子，发生订阅关系</p>
+
+<pre><code>    observables.subscribe(Subscriber|Observer);
+</code></pre>
+
+<h3>
+<a id="3subscriber与observer创建与区别" class="anchor" href="#3subscriber%E4%B8%8Eobserver%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%8C%BA%E5%88%AB" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Subscriber与Observer创建与区别</h3>
+
+<p>Subscriber与Observer基本没有区别，Subscriber其实就是实现Observer的抽象类。</p>
+
+<h3>
+<a id="主要区别在与" class="anchor" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E5%9C%A8%E4%B8%8E" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>主要区别在与：</h3>
+
+<p>1.onStart():</p>
+
+<p>这是 Subscriber 增加的方法。它会在 subscribe 刚开始，而事件还未发送之前被调用，可以用于做一些准备工作</p>
+
+<p>2.unsubscribe(): </p>
+
+<p>这是 Subscriber 所实现的另一个接口 Subscription 的方法，用于取消订阅。在这个方法被调用后，Subscriber 将不再接收事件。一般在这个方法调用前，可以使用 isUnsubscribed() 先判断一下状态。</p>
+
+<h3>
+<a id="4线程调度器" class="anchor" href="#4%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%99%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4.线程调度器</h3>
+
+<pre><code>  Observable.create(new Observable.OnSubscribe&lt;String&gt;() {
+            @Override
+            public void call(Subscriber&lt;? super String&gt; subscriber) {
+                Log.e("TAG", Thread.currentThread().getName() + " call "
+                        + Thread.currentThread().getId());
+                subscriber.onNext("onNext1、onNext2、onNext3,onNext4、onNext5、onNext6,onNext7、onNext8、onNext9");
+                subscriber.onCompleted();
+            }
+        }).subscribeOn(Schedulers.computation())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e("TAG", Thread.currentThread().getName()
+                                + " doOnSubscribe "
+                                + Thread.currentThread().getId());
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
+                .flatMap(new Func1&lt;String, Observable&lt;String&gt;&gt;() {
+                    @Override
+                    public Observable&lt;String&gt; call(String t) {
+                        Log.e("TAG", Thread.currentThread().getName()
+                                + " flatMap1 " + Thread.currentThread().getId());
+                        return Observable.from(t.split(","));
+                    }
+                })
+                .observeOn(Schedulers.newThread())
+                .flatMap(new Func1&lt;String, Observable&lt;String&gt;&gt;() {
+                    @Override
+                    public Observable&lt;String&gt; call(String t) {
+                        Log.e("TAG", Thread.currentThread().getName()
+                                + " flatMap2 " + Thread.currentThread().getId());
+                        return Observable.from(t.split("、"));
+                    }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber&lt;String&gt;() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.e("TAG", s + " " + Thread.currentThread().getName()
+                                + " onNext " + Thread.currentThread().getId());
+                    }
+                });
+</code></pre>
+
+<p>subscribeOn(): </p>
+
+<p>指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。 </p>
+
+<p>observeOn():</p>
+
+<p>指定 Subscriber 所运行在的线程。或者叫做事件消费的线程</p>
+
+<p>其实可以理解成observeOn(...) 指定的是它之后的操作所在的线程 Observable 所对应的  Subscriber ，而subscribeOn(...)指定的是Observable （被观察者）或者 OnSubscribe 当 Observable而注意doOnSubscribe也是遵循上面规律，但是doOnSubscribe会首先执行。</p>
+
+<h1>
+<a id="rxbus" class="anchor" href="#rxbus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RxBus</h1>
+
+<h2>
+<a id="基本使用" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本使用</h2>
+
+<h3>
+<a id="a注册" class="anchor" href="#a%E6%B3%A8%E5%86%8C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A、注册</h3>
+
+<p>一般使用都向Android广播使用一样，在onCreate或者onResume注册</p>
+
+<pre><code>    rxBusString = RxBus.getDefault().toObserverable(String.class).subscribe(new Subscriber&lt;String&gt;() {
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onNext(String s) {
+            mContent.setText(s);
+        }
+    });
+</code></pre>
+
+<h3>
+<a id="b解绑" class="anchor" href="#b%E8%A7%A3%E7%BB%91" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>B、解绑</h3>
+
+<p>在onDestroy或者onPause中取消，防止内存泄漏等问题</p>
+
+<pre><code>    if (!rxBusString.isUnsubscribed())
+        rxBusString.unsubscribe();
+</code></pre>
+
+<h3>
+<a id="c发送请求" class="anchor" href="#c%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C、发送请求</h3>
+
+<p>post中参数是object类型，也就是你注册时候toObserverable()中的类型，只要是符合这种类型（可以理解成符合广播的Action),后注册这个“广播”的都会收到。</p>
+
+<p>PS：其实说广播是方便大家理解，真正的按照观察者模式应该理解成，“发布”给所有符合条件的“订阅者”。</p>
+
+<pre><code>  RxBus.getDefault().post("this post is from Activity");
+</code></pre>
+
+<h3>
+<a id="d结束" class="anchor" href="#d%E7%BB%93%E6%9D%9F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>D、结束</h3>
+
+<p>RxBus不是库，只是如下几行代码而已</p>
+
+<pre><code>public class RxBus {
+    private static volatile RxBus defaultInstance;
+    // 主题
+    private final Subject bus;
+
+    // PublishSubject只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者
+    public RxBus() {
+        bus = new SerializedSubject&lt;&gt;(PublishSubject.create());
+    }
+
+    // 单例RxBus
+    public static RxBus getDefault() {
+        RxBus rxBus = defaultInstance;
+        if (defaultInstance == null) {
+            synchronized (RxBus.class) {
+                rxBus = defaultInstance;
+                if (defaultInstance == null) {
+                    rxBus = new RxBus();
+                    defaultInstance = rxBus;
+                }
+            }
+        }
+        return rxBus;
+    }
+
+    // 提供了一个新的事件
+    public void post(Object o) {
+        bus.onNext(o);
+    }
+
+    // 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+    public &lt;T&gt; Observable&lt;T&gt; toObserverable(Class&lt;T&gt; eventType) {
+        return bus.ofType(eventType).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+//        这里感谢小鄧子的提醒: ofType = filter + cast
+//        return bus.filter(new Func1&lt;Object, Boolean&gt;() {
+//            @Override
+//            public Boolean call(Object o) {
+//                return eventType.isInstance(o);
+//            }
+//        }) .cast(eventType);
+    }
+
+
+    public &lt;T&gt; Observable&lt;T&gt; toObserverable(Class&lt;T&gt; eventType, Scheduler scheduler, Scheduler observe) {
+        return bus.ofType(eventType).subscribeOn(scheduler).observeOn(observe);
+    }
+
+}
+</code></pre>
+
+<h1>
+<a id="sqlbrite" class="anchor" href="#sqlbrite" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SQLBrite</h1>
+
+<p><a href="https://github.com/square/sqlbrite">SQLBrite</a>e说简单点就是通过RxJava方式写的一种数据库模式，因为数据库操作最好是不要再Android主线程操作的，因此，使用RxJava方式能够很方便的调度线程。</p>
+
+<h2>
+<a id="基本使用-1" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本使用</h2>
+
+<h3>
+<a id="a创建" class="anchor" href="#a%E5%88%9B%E5%BB%BA" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A.创建</h3>
+
+<pre><code>    SqlBrite sqlBrite = SqlBrite.create();
+    BriteDatabase db = sqlBrite.wrapDatabaseHelper(openHelper, Schedulers.io());
+</code></pre>
+
+<h3>
+<a id="b使用" class="anchor" href="#b%E4%BD%BF%E7%94%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>B.使用</h3>
+
+<p>a).insert、delete、update</p>
+
+<p>跟SQLiteDatabase.insert | SQLiteDatabase.update | BriteDatabase.delete的方式是一样使用。</p>
+
+<pre><code>    BriteDatabase.insert(@NonNull String table, @NonNull ContentValues values)
+
+    BriteDatabase.update(@NonNull String table, @NonNull ContentValues values,
+                  @Nullable String whereClause, @Nullable String... whereArgs) 
+
+    BriteDatabase.delete(@NonNull String table, @Nullable String whereClause,
+                  @Nullable String... whereArgs) 
+</code></pre>
+
+<p>b). createQuery</p>
+
+<p>跟SQLiteDatabase.rawQuery类此，只是返回类型不同返回QueryObservable</p>
+
+<pre><code>   BriteDatabase.createQuery(@NonNull final String table, @NonNull String sql)
+
+   BriteDatabase.createQuery(@NonNull final String table, @NonNull String sql,
+                                   @NonNull String... args)
+</code></pre>
+
+<p>PS:
+  之后就是更使用RxJava方式交互</p>
+
+<p>d).事物Transaction newTransaction() </p>
+
+<p>简单事例</p>
+
+<pre><code>public void setCacheList(List&lt;Cache&gt; lists) {
+    BriteDatabase.Transaction transction = dbHelper.newTransaction();
+    try {
+        for (Cache cache : lists) {
+            ContentValues values = new ContentValues();
+            cache.setContentValues(values);
+            dbHelper.insert(CacheColumn.TABLE_NAME, values);
+            transction.markSuccessful();
+        }
+    } finally {
+        transction.end();
+    }
+}
+</code></pre>
+
+<h3>
+<a id="c简单使用" class="anchor" href="#c%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C.简单使用</h3>
+
+<pre><code>public void addCache(String json, int type) {
+    Cache cache = new Cache();
+    cache.setType(type);
+    cache.setJson(json);
+    final ContentValues cv = new ContentValues();
+    cache.setContentValues(cv);
+    StringBuilder sb = new StringBuilder();
+    sb.append("select ").append(CacheColumn.JSON).append(" from ").append(CacheColumn.TABLE_NAME);
+    Observable&lt;SqlBrite.Query&gt; query = dbHelper.createQuery(CacheColumn.TABLE_NAME, sb.toString());
+    query.map(new HaveDataFunc()).subscribe(new Action1&lt;Boolean&gt;() {
+        @Override
+        public void call(Boolean aBoolean) {
+            if (aBoolean)
+                dbHelper.update(CacheColumn.TABLE_NAME, cv, CacheColumn.TYPE + " =?", "1");
+            else
+                dbHelper.insert(CacheColumn.TABLE_NAME, cv);
+
+            dbHelper.update(CacheColumn.TABLE_NAME, cv, CacheColumn.TYPE + " =?", "1");
+        }
+    });
+}
+
+
+
+
+static class HaveDataFunc implements Func1&lt;SqlBrite.Query, Boolean&gt; {
+
+    @Override
+    public Boolean call(SqlBrite.Query query) {
+        Cursor cursor = query.run();
+        return cursor != null &amp;&amp; cursor.moveToNext();
+    }
+}
+
+
+
+
+public void getCache(int type, Subscriber&lt;List&lt;Cache&gt;&gt; subscriber) {
+    Observable&lt;SqlBrite.Query&gt; query = dbHelper.createQuery(CacheColumn.TABLE_NAME, "select * from " + CacheColumn.TABLE_NAME);
+    query.map(new Func1&lt;SqlBrite.Query, List&lt;Cache&gt;&gt;() {
+        @Override
+        public List&lt;Cache&gt; call(SqlBrite.Query query) {
+            List&lt;Cache&gt; list = null;
+            Cursor cursor = query.run();
+            if (cursor != null) {
+                list = new ArrayList&lt;Cache&gt;();
+                while (cursor.moveToNext()) {
+                    Cache r = new Cache();
+                    r.setDataFromCursor(cursor);
+                    list.add(r);
+                }
+            }
+            return list;
+        }
+    }).observeOn(AndroidSchedulers.mainThread()).subscribe(subscriber);
+}
+</code></pre>
+
+<h1>
+<a id="eventbus" class="anchor" href="#eventbus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EventBus</h1>
+
+<h2>
+<a id="基本使用-2" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本使用</h2>
+
+<h3>
+<a id="a注册-1" class="anchor" href="#a%E6%B3%A8%E5%86%8C-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A、注册</h3>
+
+<p>同RxBus一样在onCreate或者onResume注册</p>
+
+<pre><code>EventBus.getDefault().register(this);
+</code></pre>
+
+<h3>
+<a id="b解绑-1" class="anchor" href="#b%E8%A7%A3%E7%BB%91-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>B、解绑</h3>
+
+<p>在onDestroy或者onPause中取消，防止内存泄漏等问题</p>
+
+<pre><code>EventBus.getDefault().unregister(this);
+</code></pre>
+
+<h3>
+<a id="c发送请求-1" class="anchor" href="#c%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C、发送请求</h3>
+
+<pre><code>EventBus.getDefault().post("this post is from Activity");
+</code></pre>
+
+<h3>
+<a id="d数据接收" class="anchor" href="#d%E6%95%B0%E6%8D%AE%E6%8E%A5%E6%94%B6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>D、数据接收</h3>
+
+<pre><code>@Subscribe(threadMode = ThreadMode.MainThread)
+public void onEvent(String mess) {
+    mContent.setText(mess);
+}
+</code></pre>
+
+<h3>
+<a id="ps" class="anchor" href="#ps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PS:</h3>
+
+<p><a href="https://github.com/Subscribe" class="user-mention">@Subscribe</a>就是“订阅者”</p>
+
+<p>上面的Post类型为Object，而<a href="https://github.com/Subscribe" class="user-mention">@Subscribe</a>中的方法类型是与其相对应才能接收到</p>
+
+<p>也就是说上文post了，在符合相应类型的<a href="https://github.com/Subscribe" class="user-mention">@Subscribe</a>中都能够接受到消息。</p>
+
+<h3>
+<a id="理解" class="anchor" href="#%E7%90%86%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>理解</h3>
+
+<p>观察者模式主要是讲的发布者与订阅者关系</p>
+
+<p>post(Object object)就是发布信息人，而<a href="https://github.com/Subscribe" class="user-mention">@Subscribe</a>则是订阅者，接受信息的人。</p>
+
+<p>在观察者模式中，订阅者有可能是多人订阅，以此只要<a href="https://github.com/Subscribe" class="user-mention">@Subscribe</a>中类型与post(Object object)相同，即可收到信息</p>
+
+<p>更好的理解就是广播</p>
+
+<p>只要注册了相应Action的广播，收到这个Action，所有注册的都能够收到。</p>
+
+<h1>
+<a id="源码解析" class="anchor" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>源码解析</h1>
+
+<p><a href="http://www.jianshu.com/p/f057c460c77e">EventBus 3.0 源码分析</a>  |  作者  <a href="https://github.com/Skykai521">Skykai521</a></p>
         </section>
 
         <aside id="sidebar">
