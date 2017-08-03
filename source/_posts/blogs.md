@@ -1,7 +1,8 @@
 ---
-title: "搭建个人博客"
+title: 搭建个人博客
+tags: []
+categories: []
 date: 2017-08-01 16:46:50
-tags:
 ---
 
 此文讲解的搭建个人博客是通过[GitHub Pages](https://pages.github.com/) + [Hexo](https://hexo.io/zh-cn/)进行搭建。
@@ -22,25 +23,25 @@ Homebrew是 macOS 缺失的软件包管理器，具体哪些好处问什么要�
 
 #### b.安装Node
 
-安装官网安装Node也可以，但是此文讲解的是通过Brew进行安装，大家一起看看Homebrew的优点。
+官网安装Node也可以，但是此文讲解的是通过brew进行安装，大家一起看看Homebrew的优点。
 
 同样只需要在终端中输入:
 
 ```
 brew install node
 ```
-即可，这就是软件管理器的优点之一了。
+
 
 #### c.安装Git
 
-此处就不多说了直接上代码
+此处就不多说了直接上代码:
 
 ```
 brew install git
 ```
 
 #### d.安装Hexo
-至此准备工作都已经完成可以，开始安装Hexo
+至此准备工作都已经完成可以，开始安装Hex代码如下：
 
 ```
  npm install -g hexo-cli
@@ -48,7 +49,7 @@ brew install git
     
 ## 2.建站
 
-安装完成Hexo后，运行一下命令进行建站操作。
+初步环境都已经完成，剩下的就是建站了，运行一下命令即可完成建站操作。
 
 ```
 hexo init <folder>
@@ -84,12 +85,12 @@ npm install
 |   └── _posts
 └── themes
 ```
-具体什么意思，这里面就不废话了，具体可以看[官网
+具体什么意思，这里面就不废话了，可以看[官网
 ](https://hexo.io/zh-cn/docs/setup.html)
 
 ## 3.简单写作
 
-此处不会过度介绍，具体可以看官网，只会简单介绍几种常用命令。
+此处不会过度介绍，详情还是去看官网，在这里面只是简单介绍几种常用命令。
 
 #### a.新建文章
 
@@ -112,7 +113,7 @@ hexo new blogs
 
 #### b.更改主题
 
-使用Nlvi主题为介绍
+使用maupassant主题为介绍
 
 ```
 git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant
@@ -127,7 +128,7 @@ npm install hexo-renderer-sass --save
 ## Themes: https://hexo.io/themes/
 theme: maupassant
 ```
-具体更改说明可以看官网详细说明。
+每个主题安装方式不一样，具体的说明看官网更加详细。
 
 ## 4.部署
 #### a.创建Github Pages

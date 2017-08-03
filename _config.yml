@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://chunyang1988.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -73,6 +73,14 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: maupassant
+
+# Admin
+admin:
+    name: admin
+    password: admin
+    secret: hey hexo
+    expire: 60*1
+    # cors: http://localhost:3000
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
