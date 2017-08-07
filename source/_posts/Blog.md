@@ -1,7 +1,7 @@
 ---
 title: 搭建个人博客
-tags: []
-categories: []
+tags: [Hexo]
+categories: 
 date: 2017-08-01 16:46:50
 ---
 
@@ -198,6 +198,4 @@ hexo d
 ## 结束
 
 这时候你输入自己的xxx.github.io即可查看自己的博客了。
-
-
 
