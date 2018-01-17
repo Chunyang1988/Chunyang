@@ -1,6 +1,6 @@
 ---
 title: Toolbar基本使用
-date: 2017-08-10 22:26:05
+date: 2017-08-12 22:26:05
 tags: [Android]
 ---
 此文讲解的Toolbar为V7包中的Toolbar。此文会有很多不成熟地方，请大家指正。

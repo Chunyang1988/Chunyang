@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>DataBinding | Hexo</title>
+  <meta name="description" content="此文讲解的是MVVM中的Data Binding数据绑定 打开数据绑定在Model的gradle中添加： 123456android &amp;#123;    ....    dataBinding &amp;#123;        enabled = true    &amp;#125;&amp;#125; Data Binding Layout说明使用Data Binding后，可以将UI代码放到xml中，布局和数据更加">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DataBinding">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/08/27/DataBinding/index.html">
+<meta property="og:site_name" content="Chunyang1988">
+<meta property="og:description" content="此文讲解的是MVVM中的Data Binding数据绑定 打开数据绑定在Model的gradle中添加： 123456android &amp;#123;    ....    dataBinding &amp;#123;        enabled = true    &amp;#125;&amp;#125; Data Binding Layout说明使用Data Binding后，可以将UI代码放到xml中，布局和数据更加">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-11T04:57:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DataBinding">
+<meta name="twitter:description" content="此文讲解的是MVVM中的Data Binding数据绑定 打开数据绑定在Model的gradle中添加： 123456android &amp;#123;    ....    dataBinding &amp;#123;        enabled = true    &amp;#125;&amp;#125; Data Binding Layout说明使用Data Binding后，可以将UI代码放到xml中，布局和数据更加">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/08/27/DataBinding/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/chunyang1988" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Chunyang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">不断学习，不断进步</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/chunyang1988" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            
+            <p>您好，您是第<span id="busuanzi_value_site_uv">0</span>位访客</p>
+            
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-PI/">Raspberry PI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Raspberry-PI/" style="font-size: 13px;">Raspberry PI</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/树莓派/" style="font-size: 13px;">树莓派</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/13/Android-Service/" class="title">Android Service</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-13T05:07:20.000Z" itemprop="datePublished">2017-09-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/10/Dagger2Simple/" class="title">Dagger2简单使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-10T04:38:59.000Z" itemprop="datePublished">2017-09-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/02/RaspberryPIInstallStep/" class="title">树莓派3在Mac中安装步骤</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-02T11:13:01.000Z" itemprop="datePublished">2017-09-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/08/27/DataBinding/" class="title">DataBinding</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-08-27T14:36:30.000Z" itemprop="datePublished">2017-08-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/08/21/Gradlew/" class="title">Gradle Wrapper 常用方法讲解</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-08-21T06:44:13.000Z" itemprop="datePublished">2017-08-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-DataBinding" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DataBinding
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/27/DataBinding/" class="article-date">
+	  <time datetime="2017-08-27T14:36:30.000Z" itemprop="datePublished">2017-08-27</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/27/DataBinding/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>此文讲解的是MVVM中的Data Binding数据绑定</p>
+<h2 id="打开数据绑定"><a href="#打开数据绑定" class="headerlink" title="打开数据绑定"></a>打开数据绑定</h2><p>在Model的gradle中添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ....</div><div class="line">    dataBinding &#123;</div><div class="line">        enabled = true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Data-Binding-Layout说明"><a href="#Data-Binding-Layout说明" class="headerlink" title="Data Binding Layout说明"></a>Data Binding Layout说明</h2><p>使用Data Binding后，可以将UI代码放到xml中，布局和数据更加紧密。</p>
+<p>xml文件中，根节点为layout，之后data标签，在下面就是常用界面布局文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">   &lt;data&gt;</div><div class="line">       &lt;variable name=&quot;user&quot; type=&quot;com.example.User&quot;/&gt;</div><div class="line">   &lt;/data&gt;</div><div class="line">   &lt;LinearLayout</div><div class="line">       android:orientation=&quot;vertical&quot;</div><div class="line">       android:layout_width=&quot;match_parent&quot;</div><div class="line">       android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">       &lt;TextView android:layout_width=&quot;wrap_content&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           android:text=&quot;@&#123;user.firstName&#125;&quot;/&gt;</div><div class="line">       &lt;TextView android:layout_width=&quot;wrap_content&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           android:text=&quot;@&#123;user.lastName&#125;&quot;/&gt;</div><div class="line">   &lt;/LinearLayout&gt;</div><div class="line">&lt;/layout&gt;</div></pre></td></tr></table></figure>
+<h3 id="data标签常用属性"><a href="#data标签常用属性" class="headerlink" title="data标签常用属性"></a>data标签常用属性</h3><p><strong>class属性</strong><br><code>class</code> 自定义Binding名称，如果不写则默认是驼峰xml文件名+Binding，例如activity_main.xml则为ActivityMainBinding。如果有<code>class = &quot;MainViewBinding&quot;</code> 则直接这这个名字。</p>
+<p><strong>variable标签</strong><br>用于描述一个对象，之后在布局中引用使用，使用<code>name</code>表示对象引用时使用名称，<code>type</code>为要引用的对象。在View中用<code>@{}</code>来引用。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;variable name = &quot;user&quot; type = &quot;com.example.User&quot;/&gt;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">&lt;TextView </div><div class="line">    android:layout_width = &quot;warp_content&quot;</div><div class="line">    android:layout_hight = &quot;warp_content&quot;</div><div class="line">    android:text = &quot;@&#123;user.name&#125;&quot;/&gt;</div></pre></td></tr></table></figure>
+<p><strong>import标签</strong><br>导入跟Java用法一样，只要导入了当前类，后面引用的时候，就可以直接使用，不需要在制定路径例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;data&gt;</div><div class="line">    &lt;import type=&quot;android.view.View&quot;/&gt;</div><div class="line">&lt;/data&gt;</div><div class="line">...</div><div class="line">&lt;TextView</div><div class="line">   android:text=&quot;@&#123;user.lastName&#125;&quot;</div><div class="line">   android:layout_width=&quot;wrap_content&quot;</div><div class="line">   android:layout_height=&quot;wrap_content&quot;</div><div class="line">   android:visibility=&quot;@&#123;user.isAdult ? View.VISIBLE : View.GONE&#125;&quot;/&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;data&gt;</div><div class="line">    &lt;import type=&quot;com.example.MyStringUtils&quot;/&gt;</div><div class="line">    &lt;variable name=&quot;user&quot; type=&quot;com.example.User&quot;/&gt;</div><div class="line">&lt;/data&gt;</div><div class="line">…</div><div class="line">&lt;TextView</div><div class="line">   android:text=&quot;@&#123;MyStringUtils.capitalize(user.lastName)&#125;&quot;</div><div class="line">   android:layout_width=&quot;wrap_content&quot;</div><div class="line">   android:layout_height=&quot;wrap_content&quot;/&gt;</div></pre></td></tr></table></figure>
+<h2 id="Binding-数据对象"><a href="#Binding-数据对象" class="headerlink" title="Binding 数据对象"></a>Binding 数据对象</h2><p>创建正确的数据对象才能在xml文件中引用，反之则会报错。<br>主要就是对属性进行getXX、isXX等。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ul>
+<li>算术 + - / * %</li>
+<li>字符串合并 +</li>
+<li>逻辑 &amp;&amp; ||</li>
+<li>二元 &amp; | ^</li>
+<li>一元 + - ! ~</li>
+<li>移位 &gt;&gt; &gt;&gt;&gt; &lt;&lt;</li>
+<li>比较 == &gt; &lt; &gt;= &lt;=</li>
+<li>Instanceof</li>
+<li>Grouping ()</li>
+<li>文字 - character, String, numeric, null</li>
+<li>Cast</li>
+<li>方法调用</li>
+<li>Field 访问</li>
+<li>Array 访问 []</li>
+<li>三元 ?:</li>
+</ul>
+<p>尚且不支持this,super,new,以及显示的泛型，还支持一种空合并运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:text = &quot;@&#123;user.displayName ?? user.lastName&#125;&quot;</div></pre></td></tr></table></figure>
+<p>还可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">android:text=&quot;@&#123;@string/nameFormat(firstName, lastName)&#125;&quot;</div><div class="line"></div><div class="line">&lt;string name=&quot;nameFormat&quot;&gt;%s, %s&lt;/string&gt;</div></pre></td></tr></table></figure>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>事件监听两种实现方式</p>
+<ol>
+<li><p>方法引用<br> 主要是使用<code>名称::方法名</code>格式，而Binding类中方法必须有View参数，要不然编译不通过。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Handlers &#123;</div><div class="line">    public void onClickFriend(View view) &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">····</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">   &lt;data&gt;</div><div class="line">       &lt;variable name=&quot;handlers&quot; type=&quot;com.example.Handlers&quot;/&gt;</div><div class="line">       &lt;variable name=&quot;user&quot; type=&quot;com.example.User&quot;/&gt;</div><div class="line">   &lt;/data&gt;</div><div class="line">   &lt;LinearLayout</div><div class="line">       android:orientation=&quot;vertical&quot;</div><div class="line">       android:layout_width=&quot;match_parent&quot;</div><div class="line">       android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">       &lt;TextView android:layout_width=&quot;wrap_content&quot;</div><div class="line">           android:layout_height=&quot;wrap_content&quot;</div><div class="line">           android:text=&quot;@&#123;user.firstName&#125;&quot;</div><div class="line">           android:onClick=&quot;@&#123;handlers::onClickFriend&#125;&quot;/&gt;</div><div class="line">   &lt;/LinearLayout&gt;</div><div class="line">&lt;/layout&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>监听器绑定<br>使用<code>() -&gt; 名称.方法(参数...)</code></p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class Presenter &#123;</div><div class="line">    public void onSaveClick(Task task)&#123;&#125;</div><div class="line">&#125;</div><div class="line">···</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">    &lt;data&gt;</div><div class="line">        &lt;variable name=&quot;task&quot; type=&quot;com.android.example.Task&quot; /&gt;</div><div class="line">        &lt;variable name=&quot;presenter&quot; type=&quot;com.android.example.Presenter&quot; /&gt;</div><div class="line">    &lt;/data&gt;</div><div class="line">    &lt;LinearLayout android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">        &lt;Button android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:onClick=&quot;@&#123;() -&gt; presenter.onSaveClick(task)&#125;&quot; /&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line">&lt;/layout&gt;</div></pre></td></tr></table></figure>
+<h2 id="ID-Views"><a href="#ID-Views" class="headerlink" title="ID Views"></a>ID Views</h2><p>只要是在xml中，带有id的View都会在Binding中通过public final 来修饰。直接调用也可以达到findViewById效果。</p>
+<h2 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h2><p>动态更新数据</p>
+<p><a href="http://www.jianshu.com/p/b1df61a4df77" target="_blank" rel="external">http://www.jianshu.com/p/b1df61a4df77</a><br><a href="http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/" target="_blank" rel="external">http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/</a><br><a href="http://www.jianshu.com/p/87d4b9f30960" target="_blank" rel="external">http://www.jianshu.com/p/87d4b9f30960</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://chunyang1988.github.io/2017/08/27/DataBinding/" title="DataBinding" target="_blank" rel="external">https://chunyang1988.github.io/2017/08/27/DataBinding/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/chunyang1988" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/chunyang1988" target="_blank"><span class="text-dark">Chunyang</span><small class="ml-1x">不断学习，不断进步</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2017/09/02/RaspberryPIInstallStep/" title="树莓派3在Mac中安装步骤"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2017/08/21/Gradlew/" title="Gradle Wrapper 常用方法讲解">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning hidden-xs" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-tit">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="donate-payimg">
+            <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+          </div>
+          <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+          <div class="donate-payselect">
+            <div class="pay_item checked" data-id="alipay" data-src="/images/donate/alipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-alipay" value="alipay" checked>
+                <label class="pay_logo clickable" for="input-alipay"><img src="/images/donate/alipay.jpg" alt="支付宝" /></label>
+              </div>
+            </div>
+            <div class="pay_item" data-id="weipay" data-src="/images/donate/weipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-weipay" value="weipay">
+                <label class="pay_logo clickable" for="input-weipay"><img src="/images/donate/weipay.jpg" alt="微信支付" /></label>
+              </div>
+            </div>
+          </div>
+          <div class="text-grey">
+            <p>扫一扫，即可进行扫码打赏哦</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/chunyang1988" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+<script defer src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
+    
+    
+
+
+
+</body>
+</html>

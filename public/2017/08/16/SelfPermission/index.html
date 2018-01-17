@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Android动态授权那些事 | Hexo</title>
+  <meta name="description" content="Android6.0(API 23)以后推出了很多新特性，其中 动态授权 对于开发人员来说带了很多麻烦，此文将说说动态授权那些事。 好在google已经给出了解决方案，答案都在support-v4-24.1.0包中。首先最重要的两个类ActivityCompat，ContextCompat。 ContextCompat类检测是否有相应权限permission，如果有则返回PackageManage">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android动态授权那些事">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/08/16/SelfPermission/index.html">
+<meta property="og:site_name" content="Chunyang1988">
+<meta property="og:description" content="Android6.0(API 23)以后推出了很多新特性，其中 动态授权 对于开发人员来说带了很多麻烦，此文将说说动态授权那些事。 好在google已经给出了解决方案，答案都在support-v4-24.1.0包中。首先最重要的两个类ActivityCompat，ContextCompat。 ContextCompat类检测是否有相应权限permission，如果有则返回PackageManage">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2210217-ceda81027909ea98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-10-11T04:51:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android动态授权那些事">
+<meta name="twitter:description" content="Android6.0(API 23)以后推出了很多新特性，其中 动态授权 对于开发人员来说带了很多麻烦，此文将说说动态授权那些事。 好在google已经给出了解决方案，答案都在support-v4-24.1.0包中。首先最重要的两个类ActivityCompat，ContextCompat。 ContextCompat类检测是否有相应权限permission，如果有则返回PackageManage">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2210217-ceda81027909ea98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/08/16/SelfPermission/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/chunyang1988" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Chunyang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">不断学习，不断进步</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/chunyang1988" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            
+            <p>您好，您是第<span id="busuanzi_value_site_uv">0</span>位访客</p>
+            
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-PI/">Raspberry PI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Raspberry-PI/" style="font-size: 13px;">Raspberry PI</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/树莓派/" style="font-size: 13px;">树莓派</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/13/Android-Service/" class="title">Android Service</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-13T05:07:20.000Z" itemprop="datePublished">2017-09-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/10/Dagger2Simple/" class="title">Dagger2简单使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-10T04:38:59.000Z" itemprop="datePublished">2017-09-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/02/RaspberryPIInstallStep/" class="title">树莓派3在Mac中安装步骤</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-02T11:13:01.000Z" itemprop="datePublished">2017-09-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/08/27/DataBinding/" class="title">DataBinding</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-08-27T14:36:30.000Z" itemprop="datePublished">2017-08-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/08/21/Gradlew/" class="title">Gradle Wrapper 常用方法讲解</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-08-21T06:44:13.000Z" itemprop="datePublished">2017-08-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-SelfPermission" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android动态授权那些事
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/16/SelfPermission/" class="article-date">
+	  <time datetime="2017-08-16T14:02:33.000Z" itemprop="datePublished">2017-08-16</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/16/SelfPermission/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>Android6.0(API 23)以后推出了很多新特性，其中 动态授权 对于开发人员来说带了很多麻烦，此文将说说动态授权那些事。</p>
+<p>好在google已经给出了解决方案，答案都在support-v4-24.1.0包中。首先最重要的两个类ActivityCompat，ContextCompat。</p>
+<h2 id="ContextCompat类"><a href="#ContextCompat类" class="headerlink" title="ContextCompat类"></a>ContextCompat类</h2><p>检测是否有相应权限permission，如果有则返回PackageManager.PERMISSION_DENIED。</p>
+<pre><code>public static int checkSelfPermission(@NonNull Context context, @NonNull String permission)
+</code></pre><h2 id="ActivityCompat类"><a href="#ActivityCompat类" class="headerlink" title="ActivityCompat类"></a>ActivityCompat类</h2><p>请求权限</p>
+<pre><code>public static void requestPermissions(final @NonNull Activity activity,final @NonNull String[] permissions, final int requestCode)
+</code></pre><h2 id="Activity类返回"><a href="#Activity类返回" class="headerlink" title="Activity类返回"></a>Activity类返回</h2><p>请求权限返回</p>
+<pre><code>public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+</code></pre><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>关于动态授权，核心代码无非就上面几个方法的使用。要想明白如何来动态获取权限，首先要知道其交互流程。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2210217-ceda81027909ea98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>按照上图所示，分解步骤<br>1.检查所需权限是否获取<br>2.请求所有权限<br>3.友好提示用户，手动获取权限方法。<br>4.结束</p>
+<h2 id="步骤方法"><a href="#步骤方法" class="headerlink" title="步骤方法"></a>步骤方法</h2><h3 id="a-检查权限是否获取使用"><a href="#a-检查权限是否获取使用" class="headerlink" title="a.检查权限是否获取使用"></a>a.检查权限是否获取使用</h3><pre><code>// 判断权限集合
+public boolean checkPermissions(String... permissions) {
+    for (String permission : permissions) {
+        if (checkPermission(context, permission))
+            return true;
+    }
+    return false;
+}
+
+// 判断是否缺少权限
+private boolean checkPermission(Context context, String permission) {
+    return ContextCompat.checkSelfPermission(context, permission) ==
+            PackageManager.PERMISSION_DENIED;
+}
+</code></pre><p>如果有为获取权限则请求权限</p>
+<h3 id="b-请求权限"><a href="#b-请求权限" class="headerlink" title="b.请求权限"></a>b.请求权限</h3><pre><code>// 请求权限兼容低版本
+public void requestPermissions(String... permissions) {
+    ActivityCompat.requestPermissions(activity, permissions, PERMISSION_REQUEST_CODE);
+}
+</code></pre><p>使用系统权限对话框提示用户是否授权，如有拒绝获取权限的地方，则优化提示用户手动获取权限方法。</p>
+<h3 id="c-手动获取权限提示。"><a href="#c-手动获取权限提示。" class="headerlink" title="c.手动获取权限提示。"></a>c.手动获取权限提示。</h3><pre><code>private void showPermissionDialog() {
+    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    builder.setTitle(&quot;帮助&quot;);
+    builder.setMessage(&quot;当前应用缺少必要权限。\n\n请点击\&quot;设置\&quot;-\&quot;权限\&quot;-打开所需权限。&quot;);///n/n最后点击两次后退按钮，即可返回。
+
+    // 拒绝, 退出应用
+    builder.setNegativeButton(&quot;退出&quot;, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            activity.setResult(PERMISSIONS_DENIED);
+            activity.finish();
+        }
+    });
+
+    builder.setPositiveButton(&quot;设置&quot;, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            startAppSettings();
+        }
+    });
+
+    builder.setCancelable(false);
+
+    builder.show();
+}
+
+// 启动应用的设置
+private void startAppSettings() {
+    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+    intent.setData(Uri.parse(PACKAGE_URL_SCHEME + activity.getPackageName()));
+    activity.startActivity(intent);
+}
+</code></pre><h3 id="d-结束"><a href="#d-结束" class="headerlink" title="d.结束"></a>d.结束</h3><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="a-初始化"><a href="#a-初始化" class="headerlink" title="a.初始化"></a>a.初始化</h3><pre><code>mCheckPermission = new CheckPermission(this) {
+    @Override
+    String[] getPermissions() {
+        return new String[]{
+                Manifest.permission.CAMERA
+        };
+    }
+};
+</code></pre><p>b.检查权限</p>
+<pre><code>@Override
+protected void onResume() {
+    super.onResume();
+    mCheckPermission.checkPermission();
+}
+</code></pre><p>c.实现onRequestPermissionsResult</p>
+<pre><code>@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    mCheckPermission.checkRequestPermissionsResult(requestCode, grantResults);
+}
+</code></pre><p>具体代码可以看我的<a href="https://github.com/Chunyang1988/ZXingScan" target="_blank" rel="external">ZXingScan</a></p>
+<p>PS:欢迎大家支持我的，<a href="https://github.com/Chunyang1988" target="_blank" rel="external">Github</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://chunyang1988.github.io/2017/08/16/SelfPermission/" title="Android动态授权那些事" target="_blank" rel="external">https://chunyang1988.github.io/2017/08/16/SelfPermission/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/chunyang1988" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/chunyang1988" target="_blank"><span class="text-dark">Chunyang</span><small class="ml-1x">不断学习，不断进步</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2017/08/21/Gradlew/" title="Gradle Wrapper 常用方法讲解"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2017/08/12/ToolBar/" title="Toolbar基本使用">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning hidden-xs" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-tit">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="donate-payimg">
+            <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+          </div>
+          <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+          <div class="donate-payselect">
+            <div class="pay_item checked" data-id="alipay" data-src="/images/donate/alipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-alipay" value="alipay" checked>
+                <label class="pay_logo clickable" for="input-alipay"><img src="/images/donate/alipay.jpg" alt="支付宝" /></label>
+              </div>
+            </div>
+            <div class="pay_item" data-id="weipay" data-src="/images/donate/weipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-weipay" value="weipay">
+                <label class="pay_logo clickable" for="input-weipay"><img src="/images/donate/weipay.jpg" alt="微信支付" /></label>
+              </div>
+            </div>
+          </div>
+          <div class="text-grey">
+            <p>扫一扫，即可进行扫码打赏哦</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/chunyang1988" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+<script defer src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
+    
+    
+
+
+
+</body>
+</html>

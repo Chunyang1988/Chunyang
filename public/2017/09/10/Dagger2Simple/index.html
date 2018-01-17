@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Dagger2简单使用 | Hexo</title>
+  <meta name="description" content="Dagger2是基于JSR—330标准的依赖注入框架，也就是在编译期间自动生成代码，来创建相应的对象。 Dagger2相应注释讲解此文讲解案例使用Retrofit讲解，讲解前先把常规写法写出来大家根据此对比，来发现Dagger2的便利之处。 1234567891011121314151617181920212223242526//创建OkHttpClientOkHttpClient.Builder">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dagger2简单使用">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/09/10/Dagger2Simple/index.html">
+<meta property="og:site_name" content="Chunyang1988">
+<meta property="og:description" content="Dagger2是基于JSR—330标准的依赖注入框架，也就是在编译期间自动生成代码，来创建相应的对象。 Dagger2相应注释讲解此文讲解案例使用Retrofit讲解，讲解前先把常规写法写出来大家根据此对比，来发现Dagger2的便利之处。 1234567891011121314151617181920212223242526//创建OkHttpClientOkHttpClient.Builder">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-13T05:09:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dagger2简单使用">
+<meta name="twitter:description" content="Dagger2是基于JSR—330标准的依赖注入框架，也就是在编译期间自动生成代码，来创建相应的对象。 Dagger2相应注释讲解此文讲解案例使用Retrofit讲解，讲解前先把常规写法写出来大家根据此对比，来发现Dagger2的便利之处。 1234567891011121314151617181920212223242526//创建OkHttpClientOkHttpClient.Builder">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/09/10/Dagger2Simple/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/chunyang1988" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Chunyang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">不断学习，不断进步</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/chunyang1988" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            
+            <p>您好，您是第<span id="busuanzi_value_site_uv">0</span>位访客</p>
+            
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-PI/">Raspberry PI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/Raspberry-PI/" style="font-size: 13px;">Raspberry PI</a> <a href="/tags/Shell/" style="font-size: 13px;">Shell</a> <a href="/tags/树莓派/" style="font-size: 13px;">树莓派</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/13/Android-Service/" class="title">Android Service</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-13T05:07:20.000Z" itemprop="datePublished">2017-09-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/10/Dagger2Simple/" class="title">Dagger2简单使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-10T04:38:59.000Z" itemprop="datePublished">2017-09-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/02/RaspberryPIInstallStep/" class="title">树莓派3在Mac中安装步骤</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-02T11:13:01.000Z" itemprop="datePublished">2017-09-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/08/27/DataBinding/" class="title">DataBinding</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-08-27T14:36:30.000Z" itemprop="datePublished">2017-08-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/08/21/Gradlew/" class="title">Gradle Wrapper 常用方法讲解</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-08-21T06:44:13.000Z" itemprop="datePublished">2017-08-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Dagger2Simple" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dagger2简单使用
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/09/10/Dagger2Simple/" class="article-date">
+	  <time datetime="2017-09-10T04:38:59.000Z" itemprop="datePublished">2017-09-10</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/09/10/Dagger2Simple/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>Dagger2是基于JSR—330标准的依赖注入框架，也就是在编译期间自动生成代码，来创建相应的对象。</p>
+<h2 id="Dagger2相应注释讲解"><a href="#Dagger2相应注释讲解" class="headerlink" title="Dagger2相应注释讲解"></a>Dagger2相应注释讲解</h2><p>此文讲解案例使用<code>Retrofit</code>讲解，讲解前先把常规写法写出来大家根据此对比，来发现Dagger2的便利之处。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//创建OkHttpClient</div><div class="line">OkHttpClient.Builder client = new OkHttpClient.Builder();</div><div class="line">client.connectTimeout(15, TimeUnit.SECONDS);</div><div class="line">client.writeTimeout(30, TimeUnit.SECONDS);</div><div class="line">client.readTimeout(30, TimeUnit.SECONDS);</div><div class="line"></div><div class="line">//添加Interceptor</div><div class="line">HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() &#123;</div><div class="line">    @Override</div><div class="line">    public void log(String message) &#123;</div><div class="line">        LogUtil.i(TAG, message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">logging.setLevel(HttpLoggingInterceptor.Level.BODY);</div><div class="line">client.addInterceptor(logging);</div><div class="line">client.addNetworkInterceptor(new StethoInterceptor());</div><div class="line">client.addNetworkInterceptor(new NetworkInterceptor());</div><div class="line"></div><div class="line">//创建Retrofit，传递OkHttpClient、HostUrl</div><div class="line">Retrofit retrofit = new Retrofit.Builder().client(client.build())</div><div class="line">        .addConverterFactory(GsonConverterFactory.create())</div><div class="line">        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">        .baseUrl(HOST_URL).build();</div><div class="line">        </div><div class="line">//创建ApiService</div><div class="line">mService = retrofit.create(ApiService.class);</div></pre></td></tr></table></figure>
+<p>大家都知道<code>Retrofit</code>中Api的调用都会放在<code>ApiService</code>中，那么使用<code>Dagger2</code>如何来获取到<code>ApiService</code>？如何创建<code>Retrofit</code>对象？如何传递<code>OkHttpClient</code>对象？大家先带着这样的问题来看此文。</p>
+<h3 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h3><p><code>@Inject</code>负责标记那些需要被依赖注入自动创建出来，说白一点就是看见<code>@Inject</code>就代表这个对象在依赖注入中被引用或者被new出来。</p>
+<p>在<code>ApiModule</code>中代码如下，先不用看非<code>@Inject</code>地方，后续会讲到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Module</div><div class="line">public class ApiModule &#123;</div><div class="line">    String host;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    public ApiModule(String host) &#123;</div><div class="line">        this.host = host;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>ApiManager</code>属性中添加<code>@Inject ApiService</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class ApiManager &#123;</div><div class="line"></div><div class="line">    private static class Holder &#123;</div><div class="line">        private static ApiManager IN = new ApiManager();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static ApiManager getInstance() &#123;</div><div class="line">        return Holder.IN;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    ApiService apiService;</div><div class="line"></div><div class="line">    public ApiManager() &#123;</div><div class="line">        DaggerApiComponent.builder().apiModule(new ApiModule(&quot;&quot;)).build().inject(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Module"><a href="#Module" class="headerlink" title="@Module"></a>@Module</h3><p>通过<code>@Module</code>注解，Dagger才知道怎么去依赖注入，也就是上文中的<code>@Inject</code>的对象在此处查找并构造出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">@Module</div><div class="line">public class ApiModule &#123;</div><div class="line">    String host;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    public ApiModule(String host) &#123;</div><div class="line">        this.host = host;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Provides</div><div class="line">    @SoApp</div><div class="line">    public OkHttpClient okHttpClient() &#123;</div><div class="line">          //创建OkHttpClient</div><div class="line">        OkHttpClient.Builder client = new OkHttpClient.Builder();</div><div class="line">        client.connectTimeout(15, TimeUnit.SECONDS);</div><div class="line">        client.writeTimeout(30, TimeUnit.SECONDS);</div><div class="line">        client.readTimeout(30, TimeUnit.SECONDS);</div><div class="line">        </div><div class="line">        //添加Interceptor</div><div class="line">        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() &#123;</div><div class="line">            @Override</div><div class="line">            public void log(String message) &#123;</div><div class="line">                LogUtil.i(TAG, message);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        logging.setLevel(HttpLoggingInterceptor.Level.BODY);</div><div class="line">        client.addInterceptor(logging);</div><div class="line">        client.addNetworkInterceptor(new StethoInterceptor());</div><div class="line">        client.addNetworkInterceptor(new NetworkInterceptor());</div><div class="line">        return client.build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Provides</div><div class="line">    @SoApp</div><div class="line">    public ApiService apiService(String host, OkHttpClient client) &#123;</div><div class="line">     //创建Retrofit，传递OkHttpClient、HostUrl</div><div class="line">        Retrofit retrofit = new Retrofit.Builder().client(client)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</div><div class="line">                .baseUrl(host)</div><div class="line">                .build();</div><div class="line">        return retrofit.create(ApiService.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    @Provides</div><div class="line">    String providesHost() &#123;</div><div class="line">        return host;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Provides"><a href="#Provides" class="headerlink" title="@Provides"></a>@Provides</h3><p><code>@Provides</code>会标记Module中那些返回依赖的方法，通过此注解查找依赖引用，尤其是有些构造器会有很多参数，而这些参数必须在Module中添加<code>@Provides</code>的依赖方法，否则无法编译通过。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">@Module</div><div class="line">public class ApiModule &#123;</div><div class="line">    String host;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    public ApiModule(String host) &#123;</div><div class="line">        this.host = host;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Provides</div><div class="line">    @SoApp</div><div class="line">    public OkHttpClient okHttpClient() &#123;</div><div class="line">          //创建OkHttpClient</div><div class="line">        OkHttpClient.Builder client = new OkHttpClient.Builder();</div><div class="line">        client.connectTimeout(15, TimeUnit.SECONDS);</div><div class="line">        client.writeTimeout(30, TimeUnit.SECONDS);</div><div class="line">        client.readTimeout(30, TimeUnit.SECONDS);</div><div class="line">        </div><div class="line">        //添加Interceptor</div><div class="line">        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() &#123;</div><div class="line">            @Override</div><div class="line">            public void log(String message) &#123;</div><div class="line">                LogUtil.i(TAG, message);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        logging.setLevel(HttpLoggingInterceptor.Level.BODY);</div><div class="line">        client.addInterceptor(logging);</div><div class="line">        client.addNetworkInterceptor(new StethoInterceptor());</div><div class="line">        client.addNetworkInterceptor(new NetworkInterceptor());</div><div class="line">        return client.build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Provides</div><div class="line">    @SoApp</div><div class="line">    public ApiService apiService(String host, OkHttpClient client) &#123;</div><div class="line">     //创建Retrofit，传递OkHttpClient、HostUrl</div><div class="line">        Retrofit retrofit = new Retrofit.Builder().client(client)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</div><div class="line">                .baseUrl(host)</div><div class="line">                .build();</div><div class="line">        return retrofit.create(ApiService.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    @Provides</div><div class="line">    String providesHost() &#123;</div><div class="line">        return host;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h3><p>在<code>@Component</code>里面定义了在哪些Module中去依赖注入，<code>@Component</code>通常是<code>@Module</code>和<code>@Inject</code>之间的桥梁。<code>@Component</code>也可以依赖其它的component，在此处先不讲解，后续讲解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@SoApp</div><div class="line">@Component(modules = &#123;ApiModule.class&#125;)</div><div class="line">public interface ApiComponent &#123;</div><div class="line"></div><div class="line">    void inject(ApiManager manager);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在<code>ApiManager</code>属性中需要依赖注入的对象例如添加<code>@Inject ApiService</code>，Build Make Module 一下即可编译生成<code>DaggerApiComponent.builder().apiModule(new ApiModule(&quot;&quot;)).build().inject(this);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class ApiManager &#123;</div><div class="line"></div><div class="line">    private static class Holder &#123;</div><div class="line">        private static ApiManager IN = new ApiManager();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static ApiManager getInstance() &#123;</div><div class="line">        return Holder.IN;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    ApiService apiService;</div><div class="line"></div><div class="line">    public ApiManager() &#123;</div><div class="line">        DaggerApiComponent.builder().apiModule(new ApiModule(&quot;&quot;)).build().inject(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到此基本的Dagger也就讲解完成了，文中还有<code>@SoApp</code>注解在下一个文章中讲解。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://chunyang1988.github.io/2017/09/10/Dagger2Simple/" title="Dagger2简单使用" target="_blank" rel="external">https://chunyang1988.github.io/2017/09/10/Dagger2Simple/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/chunyang1988" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/chunyang1988" target="_blank"><span class="text-dark">Chunyang</span><small class="ml-1x">不断学习，不断进步</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2017/09/13/Android-Service/" title="Android Service"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2017/09/02/RaspberryPIInstallStep/" title="树莓派3在Mac中安装步骤">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning hidden-xs" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-tit">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="donate-payimg">
+            <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+          </div>
+          <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+          <div class="donate-payselect">
+            <div class="pay_item checked" data-id="alipay" data-src="/images/donate/alipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-alipay" value="alipay" checked>
+                <label class="pay_logo clickable" for="input-alipay"><img src="/images/donate/alipay.jpg" alt="支付宝" /></label>
+              </div>
+            </div>
+            <div class="pay_item" data-id="weipay" data-src="/images/donate/weipayimg.png">
+              <div class="radio">
+                <input type="radio" name="payment" id="input-weipay" value="weipay">
+                <label class="pay_logo clickable" for="input-weipay"><img src="/images/donate/weipay.jpg" alt="微信支付" /></label>
+              </div>
+            </div>
+          </div>
+          <div class="text-grey">
+            <p>扫一扫，即可进行扫码打赏哦</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/chunyang1988" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+<script defer src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
+    
+    
+
+
+
+</body>
+</html>

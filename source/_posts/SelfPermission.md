@@ -1,6 +1,6 @@
 ---
 title: Android动态授权那些事
-date: 2017-08-13 22:02:33
+date: 2017-08-16 22:02:33
 tags: [Android]
 ---
 
