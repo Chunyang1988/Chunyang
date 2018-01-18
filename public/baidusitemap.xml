@@ -4,12 +4,29 @@
 
     
   <url>
-    <loc>https://chunyang1988.github.io/2017/09/13/Android-Service/</loc>
-    <lastmod>2017-10-13T05:10:45.000Z</lastmod>
+    <loc>https://chunyang1988.github.io/2017/10/18/adb-command/</loc>
+    <lastmod>2018-01-18T09:51:07.084Z</lastmod>
+    <data>
+        <display>
+        <title>ADB 常用命令</title>
+        <pubTime>2017-10-18T09:43:34.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://chunyang1988.github.io/2017/10/05/Android-Service/</loc>
+    <lastmod>2018-01-18T09:50:51.606Z</lastmod>
     <data>
         <display>
         <title>Android Service</title>
-        <pubTime>2017-09-13T05:07:20.000Z</pubTime>
+        <pubTime>2017-10-05T05:07:20.000Z</pubTime>
         
          
            
@@ -19,12 +36,29 @@
 
     
   <url>
-    <loc>https://chunyang1988.github.io/2017/09/02/RaspberryPIInstallStep/</loc>
-    <lastmod>2017-10-13T05:09:37.000Z</lastmod>
+    <loc>https://chunyang1988.github.io/2017/09/24/Dagger2Simple/</loc>
+    <lastmod>2018-01-18T09:49:43.925Z</lastmod>
+    <data>
+        <display>
+        <title>Dagger2简单使用</title>
+        <pubTime>2017-09-24T04:38:59.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://chunyang1988.github.io/2017/09/13/RaspberryPIInstallStep/</loc>
+    <lastmod>2018-01-18T09:49:17.048Z</lastmod>
     <data>
         <display>
         <title>树莓派3在Mac中安装步骤</title>
-        <pubTime>2017-09-02T11:13:01.000Z</pubTime>
+        <pubTime>2017-09-13T11:13:01.000Z</pubTime>
         
         <tag>Raspberry PI</tag>
          
@@ -38,46 +72,12 @@
 
     
   <url>
-    <loc>https://chunyang1988.github.io/2017/09/10/Dagger2Simple/</loc>
-    <lastmod>2017-10-13T05:09:06.000Z</lastmod>
-    <data>
-        <display>
-        <title>Dagger2简单使用</title>
-        <pubTime>2017-09-10T04:38:59.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://chunyang1988.github.io/2017/08/08/AppStartup/</loc>
-    <lastmod>2017-10-11T04:57:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>App启动优化</title>
-        <pubTime>2017-08-08T14:49:33.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://chunyang1988.github.io/2017/08/27/DataBinding/</loc>
-    <lastmod>2017-10-11T04:57:01.000Z</lastmod>
+    <loc>https://chunyang1988.github.io/2017/09/09/DataBinding/</loc>
+    <lastmod>2018-01-18T09:48:42.221Z</lastmod>
     <data>
         <display>
         <title>DataBinding</title>
-        <pubTime>2017-08-27T14:36:30.000Z</pubTime>
+        <pubTime>2017-09-09T14:36:30.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -89,12 +89,12 @@
 
     
   <url>
-    <loc>https://chunyang1988.github.io/2017/08/21/Gradlew/</loc>
-    <lastmod>2017-10-11T04:52:16.000Z</lastmod>
+    <loc>https://chunyang1988.github.io/2017/08/31/Gradlew/</loc>
+    <lastmod>2018-01-18T09:48:16.148Z</lastmod>
     <data>
         <display>
         <title>Gradle Wrapper 常用方法讲解</title>
-        <pubTime>2017-08-21T06:44:13.000Z</pubTime>
+        <pubTime>2017-08-31T06:44:13.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -109,12 +109,12 @@
 
     
   <url>
-    <loc>https://chunyang1988.github.io/2017/08/16/SelfPermission/</loc>
-    <lastmod>2017-10-11T04:51:36.000Z</lastmod>
+    <loc>https://chunyang1988.github.io/2017/08/25/SelfPermission/</loc>
+    <lastmod>2018-01-18T09:47:53.803Z</lastmod>
     <data>
         <display>
         <title>Android动态授权那些事</title>
-        <pubTime>2017-08-16T14:02:33.000Z</pubTime>
+        <pubTime>2017-08-25T14:02:33.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -126,12 +126,29 @@
 
     
   <url>
-    <loc>https://chunyang1988.github.io/2017/08/12/ToolBar/</loc>
-    <lastmod>2017-10-11T04:51:03.000Z</lastmod>
+    <loc>https://chunyang1988.github.io/2017/08/18/ToolBar/</loc>
+    <lastmod>2018-01-18T09:47:25.847Z</lastmod>
     <data>
         <display>
         <title>Toolbar基本使用</title>
-        <pubTime>2017-08-12T14:26:05.000Z</pubTime>
+        <pubTime>2017-08-18T14:26:05.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://chunyang1988.github.io/2017/08/11/AppStartup/</loc>
+    <lastmod>2018-01-18T09:46:52.116Z</lastmod>
+    <data>
+        <display>
+        <title>App启动优化</title>
+        <pubTime>2017-08-11T14:49:33.000Z</pubTime>
         
         <tag>Android</tag>
          

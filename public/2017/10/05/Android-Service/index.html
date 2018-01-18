@@ -20,16 +20,16 @@
   <meta name="description" content="Service 是一个可以在后台执行长时间运行操作而不提供用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 服务基本上分为两种形式：  启动通过调用 startService() 启动服务时，服务即处于“启动”状态。核心在 onStartCommand()（允许组件启动服">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Service">
-<meta property="og:url" content="https://chunyang1988.github.io/2017/09/13/Android-Service/index.html">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/10/05/Android-Service/index.html">
 <meta property="og:site_name" content="Chunyang1988">
 <meta property="og:description" content="Service 是一个可以在后台执行长时间运行操作而不提供用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 服务基本上分为两种形式：  启动通过调用 startService() 启动服务时，服务即处于“启动”状态。核心在 onStartCommand()（允许组件启动服">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-13T05:10:45.000Z">
+<meta property="og:updated_time" content="2018-01-18T09:50:51.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Service">
 <meta name="twitter:description" content="Service 是一个可以在后台执行长时间运行操作而不提供用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 服务基本上分为两种形式：  启动通过调用 startService() 启动服务时，服务即处于“启动”状态。核心在 onStartCommand()（允许组件启动服">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/2017/09/13/Android-Service/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/10/05/Android-Service/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -175,7 +175,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-PI/">Raspberry PI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-PI/">Raspberry PI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -194,7 +194,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -213,10 +213,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2017/09/13/Android-Service/" class="title">Android Service</a>
+                <a href="/2017/10/18/adb-command/" class="title">ADB 常用命令</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-09-13T05:07:20.000Z" itemprop="datePublished">2017-09-13</time>
+                <time datetime="2017-10-18T09:43:34.000Z" itemprop="datePublished">2017-10-18</time>
               </p>
             </div>
           </li>
@@ -228,10 +228,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2017/09/10/Dagger2Simple/" class="title">Dagger2简单使用</a>
+                <a href="/2017/10/05/Android-Service/" class="title">Android Service</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-09-10T04:38:59.000Z" itemprop="datePublished">2017-09-10</time>
+                <time datetime="2017-10-05T05:07:20.000Z" itemprop="datePublished">2017-10-05</time>
               </p>
             </div>
           </li>
@@ -243,10 +243,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2017/09/02/RaspberryPIInstallStep/" class="title">树莓派3在Mac中安装步骤</a>
+                <a href="/2017/09/24/Dagger2Simple/" class="title">Dagger2简单使用</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-09-02T11:13:01.000Z" itemprop="datePublished">2017-09-02</time>
+                <time datetime="2017-09-24T04:38:59.000Z" itemprop="datePublished">2017-09-24</time>
               </p>
             </div>
           </li>
@@ -258,10 +258,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2017/08/27/DataBinding/" class="title">DataBinding</a>
+                <a href="/2017/09/13/RaspberryPIInstallStep/" class="title">树莓派3在Mac中安装步骤</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-08-27T14:36:30.000Z" itemprop="datePublished">2017-08-27</time>
+                <time datetime="2017-09-13T11:13:01.000Z" itemprop="datePublished">2017-09-13</time>
               </p>
             </div>
           </li>
@@ -270,13 +270,13 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/categories/Android/">Android</a>
+                
               </p>
               <p class="item-title">
-                <a href="/2017/08/21/Gradlew/" class="title">Gradle Wrapper 常用方法讲解</a>
+                <a href="/2017/09/09/DataBinding/" class="title">DataBinding</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-08-21T06:44:13.000Z" itemprop="datePublished">2017-08-21</time>
+                <time datetime="2017-09-09T14:36:30.000Z" itemprop="datePublished">2017-09-09</time>
               </p>
             </div>
           </li>
@@ -309,8 +309,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/09/13/Android-Service/" class="article-date">
-	  <time datetime="2017-09-13T05:07:20.000Z" itemprop="datePublished">2017-09-13</time>
+	<a href="/2017/10/05/Android-Service/" class="article-date">
+	  <time datetime="2017-10-05T05:07:20.000Z" itemprop="datePublished">2017-10-05</time>
 	</a>
 </span>
         
@@ -325,7 +325,7 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/09/13/Android-Service/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/10/05/Android-Service/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
@@ -376,7 +376,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/2017/09/13/Android-Service/" title="Android Service" target="_blank" rel="external">https://chunyang1988.github.io/2017/09/13/Android-Service/</a>
+      <a href="https://chunyang1988.github.io/2017/10/05/Android-Service/" title="Android Service" target="_blank" rel="external">https://chunyang1988.github.io/2017/10/05/Android-Service/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -424,9 +424,13 @@
   
   <ul class="pager pull-left">
     
+    <li class="prev">
+      <a href="/2017/10/18/adb-command/" title="ADB 常用命令"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
+    </li>
+    
     
     <li class="next">
-      <a href="/2017/09/10/Dagger2Simple/" title="Dagger2简单使用">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2017/09/24/Dagger2Simple/" title="Dagger2简单使用">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
   </ul>
