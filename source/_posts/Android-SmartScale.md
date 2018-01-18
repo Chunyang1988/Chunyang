@@ -1,7 +1,7 @@
 ---
 title: Android 屏幕适配
-date: 2018-10-30 18:07:31
-tags:
+date: 2017-10-30 18:07:31
+tags: [Android]
 ---
  
 > **版权声明：本文转载自Android大牛[stormzhang](http://stormzhang.com/android/2014/05/16/android-screen-adaptation/) 原创文章，可以随意转载，但请必须在明确位置注明出处！！！**
