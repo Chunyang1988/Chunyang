@@ -1,6 +1,6 @@
 ---
 title: Gradle Wrapper 常用方法讲解
-date: 2017-08-21 14:44:13
+date: 2017-08-31 14:44:13
 tags: [Android]
 categories: [Android]
 ---

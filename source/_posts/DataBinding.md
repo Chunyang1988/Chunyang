@@ -1,6 +1,6 @@
 ---
 title: DataBinding
-date: 2017-08-27 22:36:30
+date: 2017-09-09 22:36:30
 tags: [Android]
 ---
 此文讲解的是MVVM中的Data Binding数据绑定

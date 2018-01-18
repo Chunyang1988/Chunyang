@@ -1,6 +1,6 @@
 ---
 title: Dagger2简单使用
-date: 2017-9-10 12:38:59
+date: 2017-9-24 12:38:59
 tags: [Android]
 ---
 
