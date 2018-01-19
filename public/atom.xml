@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chunyang1988.github.io/"/>
-  <updated>2018-01-18T10:19:11.548Z</updated>
+  <updated>2018-01-19T08:30:14.698Z</updated>
   <id>https://chunyang1988.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android各种SdkVersion理解</title>
+    <link href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/"/>
+    <id>https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/</id>
+    <published>2017-11-09T08:26:33.000Z</published>
+    <updated>2018-01-19T08:30:14.698Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul><li>minSdkVersion</li><li>compileSdkVersion</li><li>targetSdkVersion</li></ul><h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><p>了解各种sdkVersion具体意思。</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Google 官方发布<a href="https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.egywqatjg" target="_blank" rel="external">文章</a> 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有<a href="https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="external">翻译</a></p><h3 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h3><p>设置应用可运行最低版本，如果系统的 API 高于该值，则系统会阻止程序安装。</p><h3 id="compileSdkVersion"><a href="#compileSdkVersion" class="headerlink" title="compileSdkVersion"></a>compileSdkVersion</h3><p>设置编辑版本，也就是告诉 Gradle 用哪个 Android SDK 版本编译你的应用，一般都是选择最新的SDK。</p><p>当你修改了 compileSdkVersion 的时候，可能会出现新的编译警告、编译错误，但新的 compileSdkVersion 不会被包含到 APK 中：它纯粹只是在编译的时候使用。（你真的应该修复这些警告，他们的出现一定是有原因的）。</p><p>在这里需要注意的是，编译报错的时候，一定要得到注意，根据提示来做兼容设置，例如判断Build.VERSION_SDK_INT常量表示当前Android设备的版本号来比对，使用不同的兼容方案。</p><h3 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h3><p>targetSdkVersion 是 Android 提供向前兼容的主要依据，<strong>在应用的 targetSdkVersion 没有更新之前系统不会应用最新的行为变化</strong>。</p><p>怎么理解这句话呢？如果设备API等于 targetSdkVersion 就是告知当前项目已经兼容新的行为变化。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;headerlink&quot; title=&quot;关键字&quot;&gt;&lt;/a&gt;关键字&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;minSdkVersion&lt;/li&gt;
+&lt;li&gt;compileSdkVersion&lt;/li&gt;
+&lt;li&gt;targetSdkV
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://chunyang1988.github.io/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 屏幕适配</title>

@@ -16,21 +16,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>ADB 常用命令 | Chunyang1988</title>
-  <meta name="description" content="重启机器 1adb reboot 重启机器到bootloader刷机模式 1adb reboot bootloader 重启机器到recovery恢复模式 1adb reboot recovery 查看设备应用 123456adb shell pm ls packages //查看设备所有应用adb shell pm list packages -s //查看系统应用adb shell pm li">
+  <title>Android各种SdkVersion理解 | Chunyang1988</title>
+  <meta name="description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ADB 常用命令">
-<meta property="og:url" content="https://chunyang1988.github.io/2017/10/18/adb-command/index.html">
+<meta property="og:title" content="Android各种SdkVersion理解">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/index.html">
 <meta property="og:site_name" content="Chunyang1988">
-<meta property="og:description" content="重启机器 1adb reboot 重启机器到bootloader刷机模式 1adb reboot bootloader 重启机器到recovery恢复模式 1adb reboot recovery 查看设备应用 123456adb shell pm ls packages //查看设备所有应用adb shell pm list packages -s //查看系统应用adb shell pm li">
+<meta property="og:description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-18T09:51:07.084Z">
+<meta property="og:updated_time" content="2018-01-19T08:30:14.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ADB 常用命令">
-<meta name="twitter:description" content="重启机器 1adb reboot 重启机器到bootloader刷机模式 1adb reboot bootloader 重启机器到recovery恢复模式 1adb reboot recovery 查看设备应用 123456adb shell pm ls packages //查看设备所有应用adb shell pm list packages -s //查看系统应用adb shell pm li">
+<meta name="twitter:title" content="Android各种SdkVersion理解">
+<meta name="twitter:description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/2017/10/18/adb-command/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -295,14 +295,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-adb-command" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Android-SdkVersion" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      ADB 常用命令
+      Android各种SdkVersion理解
     </h1>
   
 
@@ -310,8 +310,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/10/18/adb-command/" class="article-date">
-	  <time datetime="2017-10-18T09:43:34.000Z" itemprop="datePublished">2017-10-18</time>
+	<a href="/2017/11/09/Android-SdkVersion/" class="article-date">
+	  <time datetime="2017-11-09T08:26:33.000Z" itemprop="datePublished">2017-11-09</time>
 	</a>
 </span>
         
@@ -331,350 +331,25 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/10/18/adb-command/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/09/Android-SdkVersion/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>重启机器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot</div></pre></td></tr></table></figure>
-<p>重启机器到bootloader刷机模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot bootloader</div></pre></td></tr></table></figure>
-<p>重启机器到recovery恢复模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot recovery</div></pre></td></tr></table></figure>
-<p>查看设备应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">adb shell pm ls packages //查看设备所有应用</div><div class="line">adb shell pm list packages -s //查看系统应用</div><div class="line">adb shell pm list packages -3 //查看第三方应用</div><div class="line">adb shell pm list packages &lt;name&gt; //查看包含&lt;name&gt;列表</div><div class="line">或者</div><div class="line">adb shell pm list packages | grep &lt;name&gt;</div></pre></td></tr></table></figure>
-<p>查看应用详情</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell dumpsys package &lt;packagename&gt;</div></pre></td></tr></table></figure>
-<p>查看设备分辨率</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell wm size</div><div class="line">adb shell wm size 480x1024 //修改分辨率</div><div class="line">adb shell wm size reset //恢复分辨率</div></pre></td></tr></table></figure>
-<p>查看屏幕密度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell wm density</div><div class="line">adb shell wm density 160 //修改屏幕密度</div><div class="line">adb shell wm density reset //回复屏幕密度</div></pre></td></tr></table></figure>
-<p>查看系统版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell getprop ro.build.version.release</div></pre></td></tr></table></figure>
-<p>强制停止应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am force-stop &lt;packagename&gt;</div></pre></td></tr></table></figure>
-<p>复制设备文件到电脑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb pull &lt;设备里的文件路径&gt; [电脑上的目录]</div></pre></td></tr></table></figure></p>
-<p>复制电脑文件到设备</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb push &lt;电脑上的文件路径&gt; &lt;设备里的目录&gt;</div></pre></td></tr></table></figure>
-<p>查看log日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat</div></pre></td></tr></table></figure>
-<p>查看内核日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell dmesg</div></pre></td></tr></table></figure>
-<p>安装APk</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb install [-lrtsdg] &lt;path_to_apk&gt;// adb install x.apk</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-l</td>
-<td>将应用安装到保护目录 /mnt/asec</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>允许覆盖安装</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>允许安装 AndroidManifest.xml 里 application 指定 <code>android:testOnly=&quot;true&quot;</code> 的应用</td>
-</tr>
-<tr>
-<td>-s</td>
-<td>将应用安装到 sdcard</td>
-</tr>
-<tr>
-<td>-d</td>
-<td>允许降级覆盖安装</td>
-</tr>
-<tr>
-<td>-g</td>
-<td>授予所有运行时权限</td>
-</tr>
-</tbody>
-</table>
-<p>常见安装失败输出代码、含义及可能的解决办法如下：</p>
-<table>
-<thead>
-<tr>
-<th>输出</th>
-<th>含义</th>
-<th>解决办法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>INSTALL_FAILED_ALREADY_EXISTS</td>
-<td>应用已经存在，或卸载了但没卸载干净</td>
-<td><code>adb install</code> 时使用 <code>-r</code> 参数，或者先 <code>adb uninstall &lt;packagename&gt;</code> 再安装</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_INVALID_APK</td>
-<td>无效的 APK 文件</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_INVALID_URI</td>
-<td>无效的 APK 文件名</td>
-<td>确保 APK 文件名里无中文</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_INSUFFICIENT_STORAGE</td>
-<td>空间不足</td>
-<td>清理空间</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_DUPLICATE_PACKAGE</td>
-<td>已经存在同名程序</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_NO_SHARED_USER</td>
-<td>请求的共享用户不存在</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_UPDATE_INCOMPATIBLE</td>
-<td>以前安装过同名应用，但卸载时数据没有移除；或者已安装该应用，但签名不一致</td>
-<td>先 <code>adb uninstall &lt;packagename&gt;</code> 再安装</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_SHARED_USER_INCOMPATIBLE</td>
-<td>请求的共享用户存在但签名不一致</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_MISSING_SHARED_LIBRARY</td>
-<td>安装包使用了设备上不可用的共享库</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_REPLACE_COULDNT_DELETE</td>
-<td>替换时无法删除</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_DEXOPT</td>
-<td>dex 优化验证失败或空间不足</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_OLDER_SDK</td>
-<td>设备系统版本低于应用要求</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_CONFLICTING_PROVIDER</td>
-<td>设备里已经存在与应用里同名的 content provider</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_NEWER_SDK</td>
-<td>设备系统版本高于应用要求</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_TEST_ONLY</td>
-<td>应用是 test-only 的，但安装时没有指定 <code>-t</code> 参数</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_CPU_ABI_INCOMPATIBLE</td>
-<td>包含不兼容设备 CPU 应用程序二进制接口的 native code</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_MISSING_FEATURE</td>
-<td>应用使用了设备不可用的功能</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_CONTAINER_ERROR</td>
-<td>1. sdcard 访问失败;<br>2. 应用签名与 ROM 签名一致，被当作内置应用。</td>
-<td>1. 确认 sdcard 可用，或者安装到内置存储;<br>2. 打包时不与 ROM 使用相同签名。</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_INVALID_INSTALL_LOCATION</td>
-<td>1. 不能安装到指定位置;<br>2. 应用签名与 ROM 签名一致，被当作内置应用。</td>
-<td>1. 切换安装位置，添加或删除 <code>-s</code> 参数;<br>2. 打包时不与 ROM 使用相同签名。</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_MEDIA_UNAVAILABLE</td>
-<td>安装位置不可用</td>
-<td>一般为 sdcard，确认 sdcard 可用或安装到内置存储</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_VERIFICATION_TIMEOUT</td>
-<td>验证安装包超时</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_VERIFICATION_FAILURE</td>
-<td>验证安装包失败</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_PACKAGE_CHANGED</td>
-<td>应用与调用程序期望的不一致</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_UID_CHANGED</td>
-<td>以前安装过该应用，与本次分配的 UID 不一致</td>
-<td>清除以前安装过的残留文件</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_VERSION_DOWNGRADE</td>
-<td>已经安装了该应用更高版本</td>
-<td>使用 <code>-d</code> 参数</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_PERMISSION_MODEL_DOWNGRADE</td>
-<td>已安装 target SDK 支持运行时权限的同名应用，要安装的版本不支持运行时权限</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_NOT_APK</td>
-<td>指定路径不是文件，或不是以 <code>.apk</code> 结尾</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_BAD_MANIFEST</td>
-<td>无法解析的 AndroidManifest.xml 文件</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION</td>
-<td>解析器遇到异常</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_NO_CERTIFICATES</td>
-<td>安装包没有签名</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES</td>
-<td>已安装该应用，且签名与 APK 文件不一致</td>
-<td>先卸载设备上的该应用，再安装</td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING</td>
-<td>解析 APK 文件时遇到 <code>CertificateEncodingException</code></td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME</td>
-<td>manifest 文件里没有或者使用了无效的包名</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_BAD_SHARED_USER_ID</td>
-<td>manifest 文件里指定了无效的共享用户 ID</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_MANIFEST_MALFORMED</td>
-<td>解析 manifest 文件时遇到结构性错误</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_PARSE_FAILED_MANIFEST_EMPTY</td>
-<td>在 manifest 文件里找不到找可操作标签（instrumentation 或 application）</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_INTERNAL_ERROR</td>
-<td>因系统问题安装失败</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_USER_RESTRICTED</td>
-<td>用户被限制安装应用</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_DUPLICATE_PERMISSION</td>
-<td>应用尝试定义一个已经存在的权限名称</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_NO_MATCHING_ABIS</td>
-<td>应用包含设备的应用程序二进制接口不支持的 native code</td>
-<td></td>
-</tr>
-<tr>
-<td>INSTALL_CANCELED_BY_USER</td>
-<td>应用安装需要在设备上确认，但未操作设备或点了取消</td>
-<td>在设备上同意安装</td>
-</tr>
-<tr>
-<td>INSTALL_FAILED_ACWF_INCOMPATIBLE</td>
-<td>应用程序与设备不兼容</td>
-<td></td>
-</tr>
-<tr>
-<td>does not contain AndroidManifest.xml</td>
-<td>无效的 APK 文件</td>
-<td></td>
-</tr>
-<tr>
-<td>is not a valid zip file</td>
-<td>无效的 APK 文件</td>
-<td></td>
-</tr>
-<tr>
-<td>Offline</td>
-<td>设备未连接成功</td>
-<td>先将设备与 adb 连接成功</td>
-</tr>
-<tr>
-<td>unauthorized</td>
-<td>设备未授权允许调试</td>
-<td></td>
-</tr>
-<tr>
-<td>error: device not found</td>
-<td>没有连接成功的设备</td>
-<td>先将设备与 adb 连接成功</td>
-</tr>
-<tr>
-<td>protocol failure</td>
-<td>设备已断开连接</td>
-<td>先将设备与 adb 连接成功</td>
-</tr>
-<tr>
-<td>Unknown option: -s</td>
-<td>Android 2.2 以下不支持安装到 sdcard</td>
-<td>不使用 <code>-s</code> 参数</td>
-</tr>
-<tr>
-<td>No space left on device</td>
-<td>空间不足</td>
-<td>清理空间</td>
-</tr>
-<tr>
-<td>Permission denied … sdcard …</td>
-<td>sdcard 不可用</td>
-<td></td>
-</tr>
-<tr>
-<td>signatures do not match the previously installed version; ignoring!</td>
-<td>已安装该应用且签名不一致</td>
-<td>先卸载设备上的该应用，再安装</td>
-</tr>
-</tbody>
-</table>
-<p>卸载apk</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall [-k] &lt;packagename&gt;</div></pre></td></tr></table></figure>
-<p>清除应用数据与缓存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell pm clear &lt;packagename&gt;</div><div class="line">//&lt;packagename&gt; 表示应用名包，这条命令的效果相当于在设置里的应用信息界面点击了「清除缓存」和「清除数据</div></pre></td></tr></table></figure>
-<p>还有部分功能是需要root的以及更多命令可以查看<a href="https://github.com/mzlogin/awesome-adb" target="_blank" rel="external">github</a></p>
+        <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
+<li>minSdkVersion</li>
+<li>compileSdkVersion</li>
+<li>targetSdkVersion</li>
+</ul>
+<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><p>了解各种sdkVersion具体意思。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Google 官方发布<a href="https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.egywqatjg" target="_blank" rel="external">文章</a> 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有<a href="https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="external">翻译</a></p>
+<h3 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h3><p>设置应用可运行最低版本，如果系统的 API 高于该值，则系统会阻止程序安装。</p>
+<h3 id="compileSdkVersion"><a href="#compileSdkVersion" class="headerlink" title="compileSdkVersion"></a>compileSdkVersion</h3><p>设置编辑版本，也就是告诉 Gradle 用哪个 Android SDK 版本编译你的应用，一般都是选择最新的SDK。</p>
+<p>当你修改了 compileSdkVersion 的时候，可能会出现新的编译警告、编译错误，但新的 compileSdkVersion 不会被包含到 APK 中：它纯粹只是在编译的时候使用。（你真的应该修复这些警告，他们的出现一定是有原因的）。</p>
+<p>在这里需要注意的是，编译报错的时候，一定要得到注意，根据提示来做兼容设置，例如判断Build.VERSION_SDK_INT常量表示当前Android设备的版本号来比对，使用不同的兼容方案。</p>
+<h3 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h3><p>targetSdkVersion 是 Android 提供向前兼容的主要依据，<strong>在应用的 targetSdkVersion 没有更新之前系统不会应用最新的行为变化</strong>。</p>
+<p>怎么理解这句话呢？如果设备API等于 targetSdkVersion 就是告知当前项目已经兼容新的行为变化。</p>
 
       
     </div>
@@ -684,7 +359,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/2017/10/18/adb-command/" title="ADB 常用命令" target="_blank" rel="external">https://chunyang1988.github.io/2017/10/18/adb-command/</a>
+      <a href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/" title="Android各种SdkVersion理解" target="_blank" rel="external">https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -732,13 +407,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2017/10/30/Android-SmartScale/" title="Android 屏幕适配"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2017/10/05/Android-Service/" title="Android Service">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2017/10/30/Android-SmartScale/" title="Android 屏幕适配">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
   </ul>
