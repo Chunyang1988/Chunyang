@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://chunyang1988.github.io/2018/10/30/Android-SmartScale/</loc>
+    <loc>https://chunyang1988.github.io/2017/10/05/Android-Service/</loc>
     
-    <lastmod>2018-01-18T10:16:42.412Z</lastmod>
+    <lastmod>2018-01-18T10:19:26.954Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chunyang1988.github.io/2017/10/30/Android-SmartScale/</loc>
+    
+    <lastmod>2018-01-18T10:19:11.548Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>https://chunyang1988.github.io/2017/10/18/adb-command/</loc>
     
     <lastmod>2018-01-18T09:51:07.084Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chunyang1988.github.io/2017/10/05/Android-Service/</loc>
-    
-    <lastmod>2018-01-18T09:50:51.606Z</lastmod>
     
   </url>
   
