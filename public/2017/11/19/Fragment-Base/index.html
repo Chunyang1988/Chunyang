@@ -16,20 +16,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>关于 | Chunyang1988</title>
-  <meta name="description" content="chunyang1988，一个98年出生的小伙  只是想弄一个博客，写写日记，写写技术而已让自己有件事情做，不停的思考与进步没有太多功底，一步一步开始学习不想说太多，希望能够进步一切皆有可能相信自己">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://chunyang1988.github.io/about/index.html">
+  <title>Fragment基础知识 | Chunyang1988</title>
+  <meta name="description" content="Fragment不能独立存在，它必须嵌入到activity中，而且Fragment的生命周期直接受所在的activity的影响。例如：当activity暂停时，它拥有的所有的Fragment们都暂停了，当activity销毁时，它拥有的所有Fragment们都被销毁。  此文章没有任何讲解，只是纯粹的代码文档，列举几种方法，忘记的时候方便查看巩固使用的。 方法一：在activity的layoutx">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fragment基础知识">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/11/19/Fragment-Base/index.html">
 <meta property="og:site_name" content="Chunyang1988">
-<meta property="og:description" content="chunyang1988，一个98年出生的小伙  只是想弄一个博客，写写日记，写写技术而已让自己有件事情做，不停的思考与进步没有太多功底，一步一步开始学习不想说太多，希望能够进步一切皆有可能相信自己">
+<meta property="og:description" content="Fragment不能独立存在，它必须嵌入到activity中，而且Fragment的生命周期直接受所在的activity的影响。例如：当activity暂停时，它拥有的所有的Fragment们都暂停了，当activity销毁时，它拥有的所有Fragment们都被销毁。  此文章没有任何讲解，只是纯粹的代码文档，列举几种方法，忘记的时候方便查看巩固使用的。 方法一：在activity的layoutx">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-03T15:04:14.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2210217-8d748ff4a0e8a124.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500">
+<meta property="og:updated_time" content="2018-01-19T09:59:37.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="chunyang1988，一个98年出生的小伙  只是想弄一个博客，写写日记，写写技术而已让自己有件事情做，不停的思考与进步没有太多功底，一步一步开始学习不想说太多，希望能够进步一切皆有可能相信自己">
+<meta name="twitter:title" content="Fragment基础知识">
+<meta name="twitter:description" content="Fragment不能独立存在，它必须嵌入到activity中，而且Fragment的生命周期直接受所在的activity的影响。例如：当activity暂停时，它拥有的所有的Fragment们都暂停了，当activity销毁时，它拥有的所有Fragment们都被销毁。  此文章没有任何讲解，只是纯粹的代码文档，列举几种方法，忘记的时候方便查看巩固使用的。 方法一：在activity的layoutx">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2210217-8d748ff4a0e8a124.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/about/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/11/19/Fragment-Base/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -294,14 +297,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="page-" class="article article-type-page" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Fragment-Base" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      关于
+      Fragment基础知识
     </h1>
   
 
@@ -309,12 +312,17 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/about/index.html" class="article-date">
-	  <time datetime="2017-08-03T15:04:14.000Z" itemprop="datePublished">2017-08-03</time>
+	<a href="/2017/11/19/Fragment-Base/" class="article-date">
+	  <time datetime="2017-11-19T09:54:34.000Z" itemprop="datePublished">2017-11-19</time>
 	</a>
 </span>
         
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>
+  </span>
+
 
         
 	<span class="article-read hidden-xs">
@@ -325,18 +333,25 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/about/index.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/19/Fragment-Base/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h3 id="toc_0">chunyang1988，一个98年出生的小伙</h3>
-
-<ul><br><li>只是想弄一个博客，写写日记，写写技术而已</li><br><li>让自己有件事情做，不停的思考与进步</li><br><li>没有太多功底，一步一步开始学习</li><br><li>不想说太多，希望能够进步</li><br><li>一切皆有可能</li><br><li>相信自己</li><br></ul>
-
-
-
+        <p>Fragment不能独立存在，它必须嵌入到activity中，而且Fragment的生命周期直接受所在的activity的影响。例如：当activity暂停时，它拥有的所有的Fragment们都暂停了，当activity销毁时，它拥有的所有Fragment们都被销毁。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2210217-8d748ff4a0e8a124.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt=""></p>
+<p>此文章没有任何讲解，只是纯粹的代码文档，列举几种方法，忘记的时候方便查看巩固使用的。</p>
+<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>在activity的layoutxml文件中声明fragment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;LinearLayoutxmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line"> android:layout_width=&quot;match_parent&quot;</div><div class="line"> android:layout_height=&quot;match_parent&quot;</div><div class="line"> android:baselineAligned=&quot;false&quot;&gt;</div><div class="line"></div><div class="line">   &lt;fragment</div><div class="line">     android:id=&quot;@+id/titles&quot;</div><div class="line">     android:layout_width=&quot;match_parent&quot;</div><div class="line">     android:layout_height=&quot;match_parent&quot;</div><div class="line">     android:layout_weight=&quot;4&quot;</div><div class="line">     class=&quot;cn.eoe.first.fragment.LeftFragment&quot;/&gt;</div><div class="line"></div><div class="line">   &lt;fragment</div><div class="line">     android:id=&quot;@+id/details&quot;</div><div class="line">     android:layout_width=&quot;match_parent&quot;</div><div class="line">     android:layout_height=&quot;match_parent&quot;</div><div class="line">     android:layout_weight=&quot;1&quot;</div><div class="line">     class=&quot;cn.eoe.first.fragment.RightFragment&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">class= &quot;cn.eoe.first.fragment.LeftFragment&quot; 换成</div><div class="line">android:name=&quot;cn.eoe.first.fragment.LeftFragment&quot;也可以</div></pre></td></tr></table></figure>
+<h3 id="方法二：在代码中添加fragment到一个ViewGroup"><a href="#方法二：在代码中添加fragment到一个ViewGroup" class="headerlink" title="方法二：在代码中添加fragment到一个ViewGroup"></a>方法二：在代码中添加fragment到一个ViewGroup</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//先获得Fragment的管理</div><div class="line"> FragmentManager fragmentManager = getFragmentManager();</div><div class="line">//所有Fragment的事务都是通过FragmentTransaction来完成，在通过管理者获取事务对象</div><div class="line"> FragmentTransaction fragmentTransaction = fragmentManager</div><div class="line">                  .beginTransaction();</div><div class="line">//实例化要添加的Fragment</div><div class="line"> MyFragment fragment =  new  MyFragment();</div><div class="line">//添加Fragment通过layout中的id，实例对象，还有tag标签</div><div class="line">  fragmentTransaction.add(R.id.fragment_container1, fragment,&quot;fragment&quot;);</div><div class="line"> //提交</div><div class="line"> fragmentTransaction.commit();</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">FragmentTransaction tx =getSupportFragmentManager().beginTransaction();</div><div class="line">tx.replace(R.id.main, Fragment.instantiate(MyHomeSlidingActivity.**this**,</div><div class="line">           &quot;com.joymis.audio.FragmentmyhomeInfo&quot;));</div><div class="line">tx.commit();</div></pre></td></tr></table></figure>
+<p>其中 “com.joymis.audio.FragmentmyhomeInfo”的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">    public   class  FragmentmyhomeInfo  extends  Fragment &#123;</div><div class="line"></div><div class="line">   @Override</div><div class="line">     public  View onCreateView(LayoutInflater inflater, ViewGroup container,</div><div class="line">              Bundle savedInstanceState) &#123;</div><div class="line">         View view = inflater.inflate(R.layout.layout_myhome_fragment, container,**false**);</div><div class="line"></div><div class="line">           return  view;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @Override</div><div class="line">     public    void  onDestroyView() &#123;</div><div class="line"></div><div class="line">           super.onDestroyView();</div><div class="line">     &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>layout中的布局为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;FrameLayout</div><div class="line">   android:id=&quot;@+id/fragment_container1&quot;</div><div class="line">   android:layout_width=&quot;match_parent&quot;</div><div class="line">   android:layout_height=&quot;wrap_content&quot; /&gt;</div></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>要管理fragment们，需使用FragmentManager，要获取它，需在activity中调用方法getFragmentManager()。<br>你可以用FragmentManager来做以上事情：<br>1使用方法findFragmentById()或findFragmentByTag()，获取activity中已存在的fragment们。<br>2使用方法popBackStack()从activity的后退栈中弹出fragment们（这可以模拟后退键引发的动作）。<br>3用方法addOnBackStackChangedListerner()注册一个侦听器以监视后退栈的变化。</p>
 
       
     </div>
@@ -346,7 +361,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/about/index.html" title="关于" target="_blank" rel="external">https://chunyang1988.github.io/about/index.html</a>
+      <a href="https://chunyang1988.github.io/2017/11/19/Fragment-Base/" title="Fragment基础知识" target="_blank" rel="external">https://chunyang1988.github.io/2017/11/19/Fragment-Base/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -377,12 +392,29 @@
   </article>
   
     
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
+    
+  </section>
+
 
   
 </div>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2017/11/09/Android-SdkVersion/" title="Android各种SdkVersion理解">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
   
   
   <!-- Button trigger modal -->
@@ -491,6 +523,12 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
     
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
     
     
 
