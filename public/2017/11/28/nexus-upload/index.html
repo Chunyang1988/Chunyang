@@ -16,21 +16,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Gradle Wrapper 常用方法讲解 | Chunyang1988</title>
-  <meta name="description" content="Gradle是一个基于Groovy强大的构建系统，此文讲解的是Android Studio所使用的一些常用命令。至于以后慢慢学习在讲解一些Gradle基础知识。 常用命令以下命令都是在Mac系统下的常用命令。 12345./gradlew -v 		# 版本号./gradlew clean		# 清理项目build文件夹./gradlew build		# 检查依赖并编译打包,同时把debug、r">
-<meta name="keywords" content="Android">
+  <title>上传库到私服（Nexus） | Chunyang1988</title>
+  <meta name="description" content="这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。简单的介绍一些基础知识，详细的可以看文章结尾处的链接。 关键字 Nexus Gradle Maven  学习目标 记录Nexus库的基础上传方式 理解基本定义  正文Maven是什么？ Maven 是一个项目管理和构建自动化工具。 什么是构建工具？ 构建工具是将软件项">
+<meta name="keywords" content="Tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle Wrapper 常用方法讲解">
-<meta property="og:url" content="https://chunyang1988.github.io/2017/08/31/Gradlew/index.html">
+<meta property="og:title" content="上传库到私服（Nexus）">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/11/28/nexus-upload/index.html">
 <meta property="og:site_name" content="Chunyang1988">
-<meta property="og:description" content="Gradle是一个基于Groovy强大的构建系统，此文讲解的是Android Studio所使用的一些常用命令。至于以后慢慢学习在讲解一些Gradle基础知识。 常用命令以下命令都是在Mac系统下的常用命令。 12345./gradlew -v 		# 版本号./gradlew clean		# 清理项目build文件夹./gradlew build		# 检查依赖并编译打包,同时把debug、r">
+<meta property="og:description" content="这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。简单的介绍一些基础知识，详细的可以看文章结尾处的链接。 关键字 Nexus Gradle Maven  学习目标 记录Nexus库的基础上传方式 理解基本定义  正文Maven是什么？ Maven 是一个项目管理和构建自动化工具。 什么是构建工具？ 构建工具是将软件项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-18T09:48:16.148Z">
+<meta property="og:updated_time" content="2018-01-19T17:12:46.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle Wrapper 常用方法讲解">
-<meta name="twitter:description" content="Gradle是一个基于Groovy强大的构建系统，此文讲解的是Android Studio所使用的一些常用命令。至于以后慢慢学习在讲解一些Gradle基础知识。 常用命令以下命令都是在Mac系统下的常用命令。 12345./gradlew -v 		# 版本号./gradlew clean		# 清理项目build文件夹./gradlew build		# 检查依赖并编译打包,同时把debug、r">
+<meta name="twitter:title" content="上传库到私服（Nexus）">
+<meta name="twitter:description" content="这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。简单的介绍一些基础知识，详细的可以看文章结尾处的链接。 关键字 Nexus Gradle Maven  学习目标 记录Nexus库的基础上传方式 理解基本定义  正文Maven是什么？ Maven 是一个项目管理和构建自动化工具。 什么是构建工具？ 构建工具是将软件项">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/2017/08/31/Gradlew/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/11/28/nexus-upload/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -295,14 +295,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Gradlew" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-nexus-upload" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Gradle Wrapper 常用方法讲解
+      上传库到私服（Nexus）
     </h1>
   
 
@@ -310,20 +310,15 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/08/31/Gradlew/" class="article-date">
-	  <time datetime="2017-08-31T06:44:13.000Z" itemprop="datePublished">2017-08-31</time>
+	<a href="/2017/11/28/nexus-upload/" class="article-date">
+	  <time datetime="2017-11-27T17:10:23.000Z" itemprop="datePublished">2017-11-28</time>
 	</a>
 </span>
         
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </span>
-
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Android/">Android</a>
+	<a class="article-tag-link" href="/tags/Tools/">Tools</a>
   </span>
 
 
@@ -336,22 +331,41 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/31/Gradlew/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/28/nexus-upload/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>Gradle是一个基于Groovy强大的构建系统，此文讲解的是Android Studio所使用的一些常用命令。至于以后慢慢学习在讲解一些Gradle基础知识。</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>以下命令都是在Mac系统下的常用命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./gradlew -v 		# 版本号</div><div class="line">./gradlew clean		# 清理项目build文件夹</div><div class="line">./gradlew build		# 检查依赖并编译打包,同时把debug、release环境的包都打出来。与上文build相对应，一个是清理，一个是生成。</div><div class="line">./gradlew assembleDebug		# 编译并打Debug包</div><div class="line">./gradlew assembleXxxRelease		# 编译并打Release的包</div></pre></td></tr></table></figure>
-<p>这里面在讲解一下<code>assemble</code>的其他使用方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleXxxRelease	# 生成Xxx渠道的Release版本包</div><div class="line">./gradlew assembleXxx	# 生成Xxx渠道的Release和Debug版本包</div><div class="line">./gradlew assembleRelease	# 生成全部渠道的Release版本包。</div></pre></td></tr></table></figure>
-<p>Xxx为渠道名称写法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android&#123;</div><div class="line">...</div><div class="line">   productFlavors &#123;</div><div class="line">        tencent&#123;</div><div class="line">        ...</div><div class="line">        ...</div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">   &#125;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>完整版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 友盟多渠道打包</div><div class="line">productFlavors &#123;</div><div class="line">    tencent &#123;&#125;</div><div class="line">    wandoujia &#123;&#125;</div><div class="line">    host &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">productFlavors.all &#123; flavor -&gt;</div><div class="line">    flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// AndroidManifest.xml清单中如下</div><div class="line"></div><div class="line">&lt;meta-data</div><div class="line">    android:name=&quot;UMENG_CHANNEL&quot;</div><div class="line">    android:value=&quot;$&#123;UMENG_CHANNEL_VALUE&#125;&quot; /&gt;</div></pre></td></tr></table></figure>
+        <p>这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。<br>简单的介绍一些基础知识，详细的可以看文章结尾处的链接。</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
+<li>Nexus</li>
+<li>Gradle</li>
+<li>Maven</li>
+</ul>
+<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul>
+<li>记录Nexus库的基础上传方式</li>
+<li>理解基本定义</li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Maven是什么？</p>
+<p>Maven 是一个项目管理和构建自动化工具。</p>
+<p>什么是构建工具？</p>
+<p>构建工具是将软件项目构建相关的过程自动化的工具。构建一个软件项目通常包含以下一个或多个过程：</p>
+<p>生成源码（如果项目使用自动生成源码）；<br>从源码生成项目文档；<br>编译源码；<br>将编译后的代码打包成JAR文件或者ZIP文件；<br>将打包好的代码安装到服务器、仓库或者其它的地方；</p>
+<p>Nexus又是什么？</p>
+<p>Nexus是一个基于maven的仓库管理的社区项目。</p>
+<p>主要的使用场景就是可以在局域网搭建一个maven私服,用来部署第三方公共构件或者作为远程仓库在该局域网的一个代理。</p>
+<p>先说明一下本文不会过多介绍名词解析，在这里主要是记录最基本的配置，防止博主忘记。</p>
+<h3 id="正文的正文"><a href="#正文的正文" class="headerlink" title="正文的正文"></a>正文的正文</h3><p>首先在项目的根目录的 <code>gradle.properties</code>中配置如下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># 用户名</div><div class="line">USERNAME=admin</div><div class="line"># 密码</div><div class="line">PASSWORD=admin123</div><div class="line"># 仓库地址</div><div class="line">NEXUS_REPOSITORY_URL=http://localhost:32770/repository/chunyang1988/</div><div class="line"># 库的描述信息</div><div class="line">DESCRIPTION=dependences lib for Android</div><div class="line"># 格式aar、jar等</div><div class="line">PACKAGING=aar</div><div class="line"># 库的包名</div><div class="line">GROUP_ID=com.cy</div><div class="line"># 库的项目名称</div><div class="line">ARTIFACT_ID=artifactId</div><div class="line"># 库的名称</div><div class="line">NAME=name</div><div class="line"># 库的版本号</div><div class="line">VERSION=1.0.0</div></pre></td></tr></table></figure>
+<p>一般在根目录创建如下<code>nexus_upload.gradle</code>上传task</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;maven&apos;</div><div class="line"></div><div class="line">task androidJavadocs(type: Javadoc) &#123;</div><div class="line">    source = android.sourceSets.main.java.srcDirs</div><div class="line">    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))</div><div class="line">&#125;</div><div class="line"></div><div class="line">task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) &#123;</div><div class="line">    classifier = &apos;javadoc&apos;</div><div class="line">    from androidJavadocs.destinationDir</div><div class="line">&#125;</div><div class="line"></div><div class="line">task androidSourcesJar(type: Jar) &#123;</div><div class="line">    classifier = &apos;sources&apos;</div><div class="line">    from android.sourceSets.main.java.srcDirs</div><div class="line">&#125;</div><div class="line"></div><div class="line">artifacts &#123;</div><div class="line">    archives androidSourcesJar</div><div class="line">    archives androidJavadocsJar</div><div class="line">&#125;</div><div class="line"></div><div class="line">uploadArchives &#123;</div><div class="line">    repositories &#123;</div><div class="line">        mavenDeployer &#123;</div><div class="line">            repository(url: NEXUS_REPOSITORY_URL) &#123;</div><div class="line">                authentication(userName: USERNAME, password: PASSWORD)</div><div class="line">            &#125;</div><div class="line">            pom.project &#123;</div><div class="line">                name NAME</div><div class="line">                version VERSION</div><div class="line">                artifactId ARTIFACT_ID</div><div class="line">                groupId GROUP_ID</div><div class="line">                packaging PACKAGING</div><div class="line">                description DESCRIPTION</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也可以将<code>nexus_upload.gradle</code>上传到服务器中方便下载使用。</p>
+<p>接下来就是使用了如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NAME = &apos;permision&apos;</div><div class="line">VERSION = &apos;1.0.1&apos;</div><div class="line">ARTIFACT_ID = &apos;permision&apos;</div><div class="line">apply from: &apos;../nexus_maven.gradle&apos;//或者</div><div class="line">apply from: &apos;http://xxx/nexus_maven.gradle&apos;</div></pre></td></tr></table></figure>
+<p>之后就是运行此task即可，可以点击 AndroidStudio 右侧的 Gradle 选中相应树双击即可，也可以运行 <code>./gradlew uploadArchivesG</code>即可。</p>
+<p>到此基本基本记录已经完毕，更加深入的了解可以查看如下文章。</p>
+<p><a href="http://ifeve.com/maven-1/" target="_blank" rel="external">http://ifeve.com/maven-1/</a><br><a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">https://www.sonatype.com/download-oss-sonatype</a></p>
 
       
     </div>
@@ -361,7 +375,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/2017/08/31/Gradlew/" title="Gradle Wrapper 常用方法讲解" target="_blank" rel="external">https://chunyang1988.github.io/2017/08/31/Gradlew/</a>
+      <a href="https://chunyang1988.github.io/2017/11/28/nexus-upload/" title="上传库到私服（Nexus）" target="_blank" rel="external">https://chunyang1988.github.io/2017/11/28/nexus-upload/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -409,13 +423,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2017/09/09/DataBinding/" title="DataBinding"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2017/08/25/SelfPermission/" title="Android动态授权那些事">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2017/11/19/Fragment-Base/" title="Fragment基础知识">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
   </ul>

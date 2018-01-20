@@ -1,6 +1,6 @@
 ---
 title: 上传库到私服（Nexus）
-date: 2017-11-28 01:10:23
+date: 2017-11-28 23:10:23
 tags: [Tools]
 ---
 
@@ -108,7 +108,7 @@ uploadArchives {
 }
 ```
 
-也可以将`nexus_upload.gradle`上传到服务器中方便下载使用。
+也可以将[nexus_upload.gradle](/nexus_upload.gradle)上传到服务器中方便下载使用。
 
 接下来就是使用了如下：
 

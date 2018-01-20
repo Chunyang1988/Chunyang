@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chunyang1988.github.io/"/>
-  <updated>2018-01-19T09:59:37.515Z</updated>
+  <updated>2018-01-19T17:12:46.052Z</updated>
   <id>https://chunyang1988.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>上传库到私服（Nexus）</title>
+    <link href="https://chunyang1988.github.io/2017/11/28/nexus-upload/"/>
+    <id>https://chunyang1988.github.io/2017/11/28/nexus-upload/</id>
+    <published>2017-11-27T17:10:23.000Z</published>
+    <updated>2018-01-19T17:12:46.052Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。<br>简单的介绍一些基础知识，详细的可以看文章结尾处的链接。</p><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul><li>Nexus</li><li>Gradle</li><li>Maven</li></ul><h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul><li>记录Nexus库的基础上传方式</li><li>理解基本定义</li></ul><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Maven是什么？</p><p>Maven 是一个项目管理和构建自动化工具。</p><p>什么是构建工具？</p><p>构建工具是将软件项目构建相关的过程自动化的工具。构建一个软件项目通常包含以下一个或多个过程：</p><p>生成源码（如果项目使用自动生成源码）；<br>从源码生成项目文档；<br>编译源码；<br>将编译后的代码打包成JAR文件或者ZIP文件；<br>将打包好的代码安装到服务器、仓库或者其它的地方；</p><p>Nexus又是什么？</p><p>Nexus是一个基于maven的仓库管理的社区项目。</p><p>主要的使用场景就是可以在局域网搭建一个maven私服,用来部署第三方公共构件或者作为远程仓库在该局域网的一个代理。</p><p>先说明一下本文不会过多介绍名词解析，在这里主要是记录最基本的配置，防止博主忘记。</p><h3 id="正文的正文"><a href="#正文的正文" class="headerlink" title="正文的正文"></a>正文的正文</h3><p>首先在项目的根目录的 <code>gradle.properties</code>中配置如下信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># 用户名</div><div class="line">USERNAME=admin</div><div class="line"># 密码</div><div class="line">PASSWORD=admin123</div><div class="line"># 仓库地址</div><div class="line">NEXUS_REPOSITORY_URL=http://localhost:32770/repository/chunyang1988/</div><div class="line"># 库的描述信息</div><div class="line">DESCRIPTION=dependences lib for Android</div><div class="line"># 格式aar、jar等</div><div class="line">PACKAGING=aar</div><div class="line"># 库的包名</div><div class="line">GROUP_ID=com.cy</div><div class="line"># 库的项目名称</div><div class="line">ARTIFACT_ID=artifactId</div><div class="line"># 库的名称</div><div class="line">NAME=name</div><div class="line"># 库的版本号</div><div class="line">VERSION=1.0.0</div></pre></td></tr></table></figure><p>一般在根目录创建如下<code>nexus_upload.gradle</code>上传task</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;maven&apos;</div><div class="line"></div><div class="line">task androidJavadocs(type: Javadoc) &#123;</div><div class="line">    source = android.sourceSets.main.java.srcDirs</div><div class="line">    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))</div><div class="line">&#125;</div><div class="line"></div><div class="line">task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) &#123;</div><div class="line">    classifier = &apos;javadoc&apos;</div><div class="line">    from androidJavadocs.destinationDir</div><div class="line">&#125;</div><div class="line"></div><div class="line">task androidSourcesJar(type: Jar) &#123;</div><div class="line">    classifier = &apos;sources&apos;</div><div class="line">    from android.sourceSets.main.java.srcDirs</div><div class="line">&#125;</div><div class="line"></div><div class="line">artifacts &#123;</div><div class="line">    archives androidSourcesJar</div><div class="line">    archives androidJavadocsJar</div><div class="line">&#125;</div><div class="line"></div><div class="line">uploadArchives &#123;</div><div class="line">    repositories &#123;</div><div class="line">        mavenDeployer &#123;</div><div class="line">            repository(url: NEXUS_REPOSITORY_URL) &#123;</div><div class="line">                authentication(userName: USERNAME, password: PASSWORD)</div><div class="line">            &#125;</div><div class="line">            pom.project &#123;</div><div class="line">                name NAME</div><div class="line">                version VERSION</div><div class="line">                artifactId ARTIFACT_ID</div><div class="line">                groupId GROUP_ID</div><div class="line">                packaging PACKAGING</div><div class="line">                description DESCRIPTION</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>也可以将<code>nexus_upload.gradle</code>上传到服务器中方便下载使用。</p><p>接下来就是使用了如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NAME = &apos;permision&apos;</div><div class="line">VERSION = &apos;1.0.1&apos;</div><div class="line">ARTIFACT_ID = &apos;permision&apos;</div><div class="line">apply from: &apos;../nexus_maven.gradle&apos;//或者</div><div class="line">apply from: &apos;http://xxx/nexus_maven.gradle&apos;</div></pre></td></tr></table></figure><p>之后就是运行此task即可，可以点击 AndroidStudio 右侧的 Gradle 选中相应树双击即可，也可以运行 <code>./gradlew uploadArchivesG</code>即可。</p><p>到此基本基本记录已经完毕，更加深入的了解可以查看如下文章。</p><p><a href="http://ifeve.com/maven-1/" target="_blank" rel="external">http://ifeve.com/maven-1/</a><br><a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">https://www.sonatype.com/download-oss-sonatype</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。&lt;br&gt;简单的介绍一些基础知识，详细的可以看文章结尾处的链接。&lt;/p&gt;
+&lt;h2 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="https://chunyang1988.github.io/tags/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title>Fragment基础知识</title>
