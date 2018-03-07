@@ -112,13 +112,29 @@ uploadArchives {
 
 接下来就是使用了如下：
 
-```
-NAME = 'permision'
-VERSION = '1.0.1'
-ARTIFACT_ID = 'permision'
-apply from: '../nexus_maven.gradle'//或者
-apply from: 'http://xxx/nexus_maven.gradle'
-```
+1. 在项目 Project 的 build.gradle 中添加如下代码：
+
+    ```
+    allprojects {
+        repositories {
+            jcenter()
+            maven {
+                url NEXUS_REPOSITORY_URL
+            }
+        }
+    }
+    ```
+
+
+2. 在需要上传的 Module 中 添加如下代码：
+
+    ```
+    NAME = 'permision'
+    VERSION = '1.0.1'
+    ARTIFACT_ID = 'permision'
+    apply from: '../nexus_maven.gradle'//或者
+    apply from: 'http://xxx/nexus_maven.gradle'
+    ```
 之后就是运行此task即可，可以点击 AndroidStudio 右侧的 Gradle 选中相应树双击即可，也可以运行 `./gradlew uploadArchivesG
 `即可。
 
