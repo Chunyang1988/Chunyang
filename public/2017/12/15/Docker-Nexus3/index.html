@@ -16,21 +16,25 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Android各种SdkVersion理解 | Chunyang1988</title>
-  <meta name="description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
-<meta name="keywords" content="Android">
+  <title>Docker 安装 Nexus3 实例 | Chunyang1988</title>
+  <meta name="description" content="运行运行 Nexus3 时候一般会暴露出指定端口绑定到主机； 1docker run -d -p 8081:8081 --name nexus sonatype/nexus3 测试： 123456# 浏览器中访问地址localhost:8081# curl 检测地址curl -u admin:admin123 http://localhost:8081/service/metrics/ping 说">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android各种SdkVersion理解">
-<meta property="og:url" content="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/index.html">
+<meta property="og:title" content="Docker 安装 Nexus3 实例">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/12/15/Docker-Nexus3/index.html">
 <meta property="og:site_name" content="Chunyang1988">
-<meta property="og:description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
+<meta property="og:description" content="运行运行 Nexus3 时候一般会暴露出指定端口绑定到主机； 1docker run -d -p 8081:8081 --name nexus sonatype/nexus3 测试： 123456# 浏览器中访问地址localhost:8081# curl 检测地址curl -u admin:admin123 http://localhost:8081/service/metrics/ping 说">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-19T08:30:14.698Z">
+<meta property="og:image" content="http://p57e5dawm.bkt.clouddn.com/login.png">
+<meta property="og:image" content="http://p57e5dawm.bkt.clouddn.com/create.png">
+<meta property="og:image" content="http://p57e5dawm.bkt.clouddn.com/docker-hosted.png">
+<meta property="og:updated_time" content="2018-03-07T04:54:47.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android各种SdkVersion理解">
-<meta name="twitter:description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
+<meta name="twitter:title" content="Docker 安装 Nexus3 实例">
+<meta name="twitter:description" content="运行运行 Nexus3 时候一般会暴露出指定端口绑定到主机； 1docker run -d -p 8081:8081 --name nexus sonatype/nexus3 测试： 123456# 浏览器中访问地址localhost:8081# curl 检测地址curl -u admin:admin123 http://localhost:8081/service/metrics/ping 说">
+<meta name="twitter:image" content="http://p57e5dawm.bkt.clouddn.com/login.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/12/15/Docker-Nexus3/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -295,14 +299,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Android-SdkVersion" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Docker-Nexus3" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Android各种SdkVersion理解
+      Docker 安装 Nexus3 实例
     </h1>
   
 
@@ -310,15 +314,15 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/11/09/Android-SdkVersion/" class="article-date">
-	  <time datetime="2017-11-09T08:26:33.000Z" itemprop="datePublished">2017-11-09</time>
+	<a href="/2017/12/15/Docker-Nexus3/" class="article-date">
+	  <time datetime="2017-12-15T04:41:26.000Z" itemprop="datePublished">2017-12-15</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Android/">Android</a>
+	<a class="article-tag-link" href="/tags/Docker/">Docker</a>
   </span>
 
 
@@ -331,25 +335,38 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/09/Android-SdkVersion/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/12/15/Docker-Nexus3/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
-<li>minSdkVersion</li>
-<li>compileSdkVersion</li>
-<li>targetSdkVersion</li>
+        <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>运行 Nexus3 时候一般会暴露出指定端口绑定到主机；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -p 8081:8081 --name nexus sonatype/nexus3</div></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 浏览器中访问地址</div><div class="line">localhost:8081</div><div class="line"></div><div class="line"># curl 检测地址</div><div class="line"></div><div class="line">curl -u admin:admin123 http://localhost:8081/service/metrics/ping</div></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>默认凭证是： admin/admin123</li>
+<li><p>持久数据推荐方法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    $ docker volume create --name nexus-data</div><div class="line">$ docker run -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><p>了解各种sdkVersion具体意思。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Google 官方发布<a href="https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.egywqatjg" target="_blank" rel="external">文章</a> 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有<a href="https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="external">翻译</a></p>
-<h3 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h3><p>设置应用可运行最低版本，如果系统的 API 高于该值，则系统会阻止程序安装。</p>
-<h3 id="compileSdkVersion"><a href="#compileSdkVersion" class="headerlink" title="compileSdkVersion"></a>compileSdkVersion</h3><p>设置编辑版本，也就是告诉 Gradle 用哪个 Android SDK 版本编译你的应用，一般都是选择最新的SDK。</p>
-<p>当你修改了 compileSdkVersion 的时候，可能会出现新的编译警告、编译错误，但新的 compileSdkVersion 不会被包含到 APK 中：它纯粹只是在编译的时候使用。（你真的应该修复这些警告，他们的出现一定是有原因的）。</p>
-<p>在这里需要注意的是，编译报错的时候，一定要得到注意，根据提示来做兼容设置，例如判断Build.VERSION_SDK_INT常量表示当前Android设备的版本号来比对，使用不同的兼容方案。</p>
-<h3 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h3><p>targetSdkVersion 是 Android 提供向前兼容的主要依据，<strong>在应用的 targetSdkVersion 没有更新之前系统不会应用最新的行为变化</strong>。</p>
-<p>怎么理解这句话呢？如果设备API等于 targetSdkVersion 就是告知当前项目已经兼容新的行为变化。</p>
+<h2 id="搭建私服"><a href="#搭建私服" class="headerlink" title="搭建私服"></a>搭建私服</h2><p>浏览器中输入<code>localhost:8081</code> 进入 Nexus 平台</p>
+<ol>
+<li><p>登录系统</p>
+<p> 输入用户名与密码 admin/admin123<br> <img src="http://p57e5dawm.bkt.clouddn.com/login.png" alt=""></p>
+</li>
+</ol>
+<ol>
+<li><p>创新私有库</p>
+<p> 按照步骤操作<br><img src="http://p57e5dawm.bkt.clouddn.com/create.png" alt=""></p>
+<p> 第三部后选择 <code>docker(hosted)</code></p>
+<p> 填写 name 按照下图创建</p>
+<p> <img src="http://p57e5dawm.bkt.clouddn.com/docker-hosted.png" alt=""></p>
+<p> 最后点击 <code>Create repository</code></p>
+</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>如何使用可以看我之前文章 <a href="http://chunyang1988.com/2017/11/28/nexus-upload/" target="_blank" rel="external">上传库到私服</a></p>
 
       
     </div>
@@ -359,7 +376,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/" title="Android各种SdkVersion理解" target="_blank" rel="external">https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/</a>
+      <a href="https://chunyang1988.github.io/2017/12/15/Docker-Nexus3/" title="Docker 安装 Nexus3 实例" target="_blank" rel="external">https://chunyang1988.github.io/2017/12/15/Docker-Nexus3/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -407,13 +424,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2017/11/19/Fragment-Base/" title="Fragment基础知识"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2017/10/30/Android-SmartScale/" title="Android 屏幕适配">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2017/12/03/Docker-Introduction/" title="Docker 入门介绍">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
   </ul>

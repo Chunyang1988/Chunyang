@@ -4,12 +4,46 @@
 
     
   <url>
+    <loc>https://chunyang1988.github.io/2017/12/15/Docker-Nexus3/</loc>
+    <lastmod>2018-03-07T04:54:47.834Z</lastmod>
+    <data>
+        <display>
+        <title>Docker 安装 Nexus3 实例</title>
+        <pubTime>2017-12-15T04:41:26.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://chunyang1988.github.io/2017/12/03/Docker-Introduction/</loc>
+    <lastmod>2018-03-07T04:40:46.160Z</lastmod>
+    <data>
+        <display>
+        <title>Docker 入门介绍</title>
+        <pubTime>2017-12-03T04:38:26.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://chunyang1988.github.io/2017/11/28/nexus-upload/</loc>
-    <lastmod>2018-01-19T17:12:46.052Z</lastmod>
+    <lastmod>2018-01-20T02:58:59.384Z</lastmod>
     <data>
         <display>
         <title>上传库到私服（Nexus）</title>
-        <pubTime>2017-11-27T17:10:23.000Z</pubTime>
+        <pubTime>2017-11-28T15:10:23.000Z</pubTime>
         
         <tag>Tools</tag>
          

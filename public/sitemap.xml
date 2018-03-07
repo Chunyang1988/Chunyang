@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chunyang1988.github.io/2017/12/15/Docker-Nexus3/</loc>
+    
+    <lastmod>2018-03-07T04:54:47.834Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chunyang1988.github.io/2017/12/03/Docker-Introduction/</loc>
+    
+    <lastmod>2018-03-07T04:40:46.160Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chunyang1988.github.io/2017/11/28/nexus-upload/</loc>
     
-    <lastmod>2018-01-19T17:12:46.052Z</lastmod>
+    <lastmod>2018-01-20T02:58:59.384Z</lastmod>
     
   </url>
   
