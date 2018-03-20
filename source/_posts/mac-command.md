@@ -1,7 +1,7 @@
 ---
 title: Mac 终端常用命令
 date: 2018-01-12 16:37:17
-tags: [Shell 、Mac]
+tags: [Shell , Mac]
 ---
 
 **列出文件**
