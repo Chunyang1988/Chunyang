@@ -4,8 +4,33 @@
 
     
   <url>
+    <loc>https://chunyang1988.github.io/2017/08/31/Gradlew/</loc>
+    <lastmod>2018-03-20T06:38:35.733Z</lastmod>
+    <data>
+        <display>
+        <title>Gradle Wrapper 常用方法讲解</title>
+        <pubTime>2017-08-31T06:44:13.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Gradle</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="https://chunyang1988.github.io/categories/Android/"/>
+          
+             
+              <breadCrumb title="Gradle" url="https://chunyang1988.github.io/categories/Android/Gradle/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://chunyang1988.github.io/2017/12/24/Android-Gradle-Basic-Instructions/</loc>
-    <lastmod>2018-03-09T07:36:18.050Z</lastmod>
+    <lastmod>2018-03-20T06:37:49.023Z</lastmod>
     <data>
         <display>
         <title>Android Gradle 基础说明</title>
@@ -14,6 +39,23 @@
         <tag>Android</tag>
          
         <tag>Gradle</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://chunyang1988.github.io/2017/12/31/Android-Permission/</loc>
+    <lastmod>2018-03-20T06:36:00.504Z</lastmod>
+    <data>
+        <display>
+        <title>Android 动态授权那些事</title>
+        <pubTime>2017-12-31T06:34:23.000Z</pubTime>
+        
+        <tag>Android</tag>
          
          
            
@@ -201,43 +243,6 @@
         <display>
         <title>DataBinding</title>
         <pubTime>2017-09-09T14:36:30.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://chunyang1988.github.io/2017/08/31/Gradlew/</loc>
-    <lastmod>2018-01-18T09:48:16.148Z</lastmod>
-    <data>
-        <display>
-        <title>Gradle Wrapper 常用方法讲解</title>
-        <pubTime>2017-08-31T06:44:13.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://chunyang1988.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://chunyang1988.github.io/2017/08/25/SelfPermission/</loc>
-    <lastmod>2018-01-18T09:47:53.803Z</lastmod>
-    <data>
-        <display>
-        <title>Android动态授权那些事</title>
-        <pubTime>2017-08-25T14:02:33.000Z</pubTime>
         
         <tag>Android</tag>
          

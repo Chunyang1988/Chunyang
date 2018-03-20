@@ -16,21 +16,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>上传库到私服（Nexus） | Chunyang1988</title>
-  <meta name="description" content="这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。简单的介绍一些基础知识，详细的可以看文章结尾处的链接。 关键字 Nexus Gradle Maven  学习目标 记录Nexus库的基础上传方式 理解基本定义  正文Maven是什么？ Maven 是一个项目管理和构建自动化工具。 什么是构建工具？ 构建工具是将软件项">
-<meta name="keywords" content="Tools">
+  <title>Android 动态授权那些事 | Chunyang1988</title>
+  <meta name="description" content="关键字 动态授权 Android API  学习目标了解动态授权机制，以及各个版本注意事项。文章结尾有项目地址。 正文从 Android 6.0(API 23)开始，应用要使用危险全系时候，需要动态获取权限，而不是安装时候授权。 系统权限分为两类：正常权限和危险权限  正常权限不会直接给用户隐私带来风险。如果在应用的AndroidManifes中注册，系统将会自动授予权限。 危险权限会授予应用访问">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="上传库到私服（Nexus）">
-<meta property="og:url" content="https://chunyang1988.github.io/2017/11/28/nexus-upload/index.html">
+<meta property="og:title" content="Android 动态授权那些事">
+<meta property="og:url" content="https://chunyang1988.github.io/2017/12/31/Android-Permission/index.html">
 <meta property="og:site_name" content="Chunyang1988">
-<meta property="og:description" content="这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。简单的介绍一些基础知识，详细的可以看文章结尾处的链接。 关键字 Nexus Gradle Maven  学习目标 记录Nexus库的基础上传方式 理解基本定义  正文Maven是什么？ Maven 是一个项目管理和构建自动化工具。 什么是构建工具？ 构建工具是将软件项">
+<meta property="og:description" content="关键字 动态授权 Android API  学习目标了解动态授权机制，以及各个版本注意事项。文章结尾有项目地址。 正文从 Android 6.0(API 23)开始，应用要使用危险全系时候，需要动态获取权限，而不是安装时候授权。 系统权限分为两类：正常权限和危险权限  正常权限不会直接给用户隐私带来风险。如果在应用的AndroidManifes中注册，系统将会自动授予权限。 危险权限会授予应用访问">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-07T10:25:01.249Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2210217-ceda81027909ea98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-20T06:36:00.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="上传库到私服（Nexus）">
-<meta name="twitter:description" content="这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。简单的介绍一些基础知识，详细的可以看文章结尾处的链接。 关键字 Nexus Gradle Maven  学习目标 记录Nexus库的基础上传方式 理解基本定义  正文Maven是什么？ Maven 是一个项目管理和构建自动化工具。 什么是构建工具？ 构建工具是将软件项">
+<meta name="twitter:title" content="Android 动态授权那些事">
+<meta name="twitter:description" content="关键字 动态授权 Android API  学习目标了解动态授权机制，以及各个版本注意事项。文章结尾有项目地址。 正文从 Android 6.0(API 23)开始，应用要使用危险全系时候，需要动态获取权限，而不是安装时候授权。 系统权限分为两类：正常权限和危险权限  正常权限不会直接给用户隐私带来风险。如果在应用的AndroidManifes中注册，系统将会自动授予权限。 危险权限会授予应用访问">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2210217-ceda81027909ea98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/2017/11/28/nexus-upload/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2017/12/31/Android-Permission/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -295,14 +297,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-nexus-upload" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Android-Permission" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      上传库到私服（Nexus）
+      Android 动态授权那些事
     </h1>
   
 
@@ -310,15 +312,15 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/11/28/nexus-upload/" class="article-date">
-	  <time datetime="2017-11-28T15:10:23.000Z" itemprop="datePublished">2017-11-28</time>
+	<a href="/2017/12/31/Android-Permission/" class="article-date">
+	  <time datetime="2017-12-31T06:34:23.000Z" itemprop="datePublished">2017-12-31</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Tools/">Tools</a>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>
   </span>
 
 
@@ -331,48 +333,40 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/28/nexus-upload/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/12/31/Android-Permission/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>这里面主要介绍 Android Studio 通过 gradle 上传库到私有 Maven 服务器 Nexus 的配置文件如何配置。<br>简单的介绍一些基础知识，详细的可以看文章结尾处的链接。</p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
-<li>Nexus</li>
-<li>Gradle</li>
-<li>Maven</li>
+        <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
+<li>动态授权</li>
+<li>Android API</li>
 </ul>
-<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul>
-<li>记录Nexus库的基础上传方式</li>
-<li>理解基本定义</li>
+<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><p>了解动态授权机制，以及各个版本注意事项。文章结尾有项目地址。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>从 Android 6.0(API 23)开始，应用要使用危险全系时候，需要动态获取权限，而不是安装时候授权。</p>
+<p>系统权限分为两类：<strong>正常权限</strong>和<strong>危险权限</strong></p>
+<ul>
+<li>正常权限不会直接给用户隐私带来风险。如果在应用的AndroidManifes中注册，系统将会自动授予权限。</li>
+<li>危险权限会授予应用访问用户机密数据的权限，如果在应用的AndroidManifes中注册，则用户必须明确批准应用才能使用此权限。</li>
 </ul>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Maven是什么？</p>
-<p>Maven 是一个项目管理和构建自动化工具。</p>
-<p>什么是构建工具？</p>
-<p>构建工具是将软件项目构建相关的过程自动化的工具。构建一个软件项目通常包含以下一个或多个过程：</p>
-<p>生成源码（如果项目使用自动生成源码）；<br>从源码生成项目文档；<br>编译源码；<br>将编译后的代码打包成JAR文件或者ZIP文件；<br>将打包好的代码安装到服务器、仓库或者其它的地方；</p>
-<p>Nexus又是什么？</p>
-<p>Nexus是一个基于maven的仓库管理的社区项目。</p>
-<p>主要的使用场景就是可以在局域网搭建一个maven私服,用来部署第三方公共构件或者作为远程仓库在该局域网的一个代理。</p>
-<p>先说明一下本文不会过多介绍名词解析，在这里主要是记录最基本的配置，防止博主忘记。</p>
-<h3 id="正文的正文"><a href="#正文的正文" class="headerlink" title="正文的正文"></a>正文的正文</h3><p>首先在项目的根目录的 <code>gradle.properties</code>中配置如下信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># 用户名</div><div class="line">USERNAME=admin</div><div class="line"># 密码</div><div class="line">PASSWORD=admin123</div><div class="line"># 仓库地址</div><div class="line">NEXUS_REPOSITORY_URL=http://localhost:32770/repository/chunyang1988/</div><div class="line"># 库的描述信息</div><div class="line">DESCRIPTION=dependences lib for Android</div><div class="line"># 格式aar、jar等</div><div class="line">PACKAGING=aar</div><div class="line"># 库的包名</div><div class="line">GROUP_ID=com.cy</div><div class="line"># 库的项目名称</div><div class="line">ARTIFACT_ID=artifactId</div><div class="line"># 库的名称</div><div class="line">NAME=name</div><div class="line"># 库的版本号</div><div class="line">VERSION=1.0.0</div></pre></td></tr></table></figure>
-<p>一般在根目录创建如下<code>nexus_upload.gradle</code>上传task</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;maven&apos;</div><div class="line"></div><div class="line">task androidJavadocs(type: Javadoc) &#123;</div><div class="line">    source = android.sourceSets.main.java.srcDirs</div><div class="line">    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))</div><div class="line">&#125;</div><div class="line"></div><div class="line">task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) &#123;</div><div class="line">    classifier = &apos;javadoc&apos;</div><div class="line">    from androidJavadocs.destinationDir</div><div class="line">&#125;</div><div class="line"></div><div class="line">task androidSourcesJar(type: Jar) &#123;</div><div class="line">    classifier = &apos;sources&apos;</div><div class="line">    from android.sourceSets.main.java.srcDirs</div><div class="line">&#125;</div><div class="line"></div><div class="line">artifacts &#123;</div><div class="line">    archives androidSourcesJar</div><div class="line">    archives androidJavadocsJar</div><div class="line">&#125;</div><div class="line"></div><div class="line">uploadArchives &#123;</div><div class="line">    repositories &#123;</div><div class="line">        mavenDeployer &#123;</div><div class="line">            repository(url: NEXUS_REPOSITORY_URL) &#123;</div><div class="line">                authentication(userName: USERNAME, password: PASSWORD)</div><div class="line">            &#125;</div><div class="line">            pom.project &#123;</div><div class="line">                name NAME</div><div class="line">                version VERSION</div><div class="line">                artifactId ARTIFACT_ID</div><div class="line">                groupId GROUP_ID</div><div class="line">                packaging PACKAGING</div><div class="line">                description DESCRIPTION</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>也可以将<a href="/nexus_upload.gradle">nexus_upload.gradle</a>上传到服务器中方便下载使用。</p>
-<p>接下来就是使用了如下：</p>
-<ol>
-<li><p>在项目 Project 的 build.gradle 中添加如下代码：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        maven &#123;</div><div class="line">            url NEXUS_REPOSITORY_URL</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在需要上传的 Module 中 添加如下代码：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NAME = &apos;permision&apos;</div><div class="line">VERSION = &apos;1.0.1&apos;</div><div class="line">ARTIFACT_ID = &apos;permision&apos;</div><div class="line">apply from: &apos;../nexus_maven.gradle&apos;//或者</div><div class="line">apply from: &apos;http://xxx/nexus_maven.gradle&apos;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>之后就是运行此task即可，可以点击 AndroidStudio 右侧的 Gradle 选中相应树双击即可，也可以运行 <code>./gradlew uploadArchivesG</code>即可。</p>
-<p>到此基本基本记录已经完毕，更加深入的了解可以查看如下文章。</p>
-<p><a href="http://ifeve.com/maven-1/" target="_blank" rel="external">http://ifeve.com/maven-1/</a><br><a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="external">https://www.sonatype.com/download-oss-sonatype</a></p>
+<p>运行时权限说明：</p>
+<ul>
+<li>如果设备运行在 Android5.1 或者更低版本，如果 AndroidManifest 列出危险权限，则用户必须安装应用时授予此权限，反之则无法安装应用。</li>
+<li>如果设备运行在 Android6.0 或者更高版本，应用必须在 AndroidManifest 中列出权限，并且它必须在运行时请求需要的危险权限。</li>
+</ul>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p><img src="http://upload-images.jianshu.io/upload_images/2210217-ceda81027909ea98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="检测权限"><a href="#检测权限" class="headerlink" title="检测权限"></a>检测权限</h3><p>如果使用到危险权限，则每次执行需要这一权限的操作时，必须都要检查是否已有权限。检测权限需要调用<code>PermissionChecker.checkSelfPermission(@NonNull Context context,@NonNull String permission)</code>方法<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int permissionCheck = PermissionChecker.checkSelfPermission(thisActivity,</div><div class="line">        Manifest.permission.WRITE_CALENDAR);</div></pre></td></tr></table></figure>
+<p>如果有此权限，方法返回<code>PackageManager.PERMISSION_GRANTED</code>，反之返回<code>PackageManager.PERMISSION_DENIED</code></p>
+<h3 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h3><p>如果应用无所需的权限，则应用必须调用<code>ActivityCompat.requestPermissions(final @NonNull Activity activity,final @NonNull String[] permissions, final @IntRange(from = 0) int requestCode)</code>方法来请求适当的权限。这时候会跳出系统对话框（不可定制），询问用户是否授权，系统会将结果会调给<code>Activity.onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)</code>方法。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">// Here, thisActivity is the current activity</div><div class="line">if (ContextCompat.checkSelfPermission(thisActivity,</div><div class="line">                Manifest.permission.READ_CONTACTS)</div><div class="line">        != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">    // Should we show an explanation?</div><div class="line">    if (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,</div><div class="line">            Manifest.permission.READ_CONTACTS)) &#123;</div><div class="line"></div><div class="line">        // Show an expanation to the user *asynchronously* -- don&apos;t block</div><div class="line">        // this thread waiting for the user&apos;s response! After the user</div><div class="line">        // sees the explanation, try again to request the permission.</div><div class="line"></div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        // No explanation needed, we can request the permission.</div><div class="line"></div><div class="line">        ActivityCompat.requestPermissions(thisActivity,</div><div class="line">                new String[]&#123;Manifest.permission.READ_CONTACTS&#125;,</div><div class="line">                MY_PERMISSIONS_REQUEST_READ_CONTACTS);</div><div class="line"></div><div class="line">        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an</div><div class="line">        // app-defined int constant. The callback method gets the</div><div class="line">        // result of the request.</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注：<code>ActivityCompat.shouldShowRequestPermissionRationale()</code>一般用它来判断，如果用户在过去拒绝了权限请求，并在权限请求系统对话框中选择了 Don’t ask again 选项，此方法将返回 false。如果设备规范禁止应用具有该权限，此方法也会返回 false。因此用此方法用于解释应用为什么需要权限的情况，来提示用户权限使用。</p>
+<h3 id="处理权限请求"><a href="#处理权限请求" class="headerlink" title="处理权限请求"></a>处理权限请求</h3><p>当应用请求权限后，系统会将结果会调给<code>onRequestPermissionsResult()</code>方法<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onRequestPermissionsResult(int requestCode,</div><div class="line">        String permissions[], int[] grantResults) &#123;</div><div class="line">    switch (requestCode) &#123;</div><div class="line">        case MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</div><div class="line">            // If request is cancelled, the result arrays are empty.</div><div class="line">            if (grantResults.length &gt; 0</div><div class="line">                &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">                // permission was granted, yay! Do the</div><div class="line">                // contacts-related task you need to do.</div><div class="line"></div><div class="line">            &#125; else &#123;</div><div class="line"></div><div class="line">                // permission denied, boo! Disable the</div><div class="line">                // functionality that depends on this permission.</div><div class="line">            &#125;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // other &apos;case&apos; lines to check for other</div><div class="line">        // permissions this app might request</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请求的权限结果会返回给此方法，其中<code>int[] grantResults</code>用户判断当时请求的权限<code>String permissions[]</code>结果，如果获取到权限则为<code>PackageManager.PERMISSION_GRANTED</code>其他都未未获取到权限。</p>
+<p>详情请看<a href="https://github.com/Chunyang1988/Android-Permission" target="_blank" rel="external">Android-Permission</a></p>
 
       
     </div>
@@ -382,7 +376,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/2017/11/28/nexus-upload/" title="上传库到私服（Nexus）" target="_blank" rel="external">https://chunyang1988.github.io/2017/11/28/nexus-upload/</a>
+      <a href="https://chunyang1988.github.io/2017/12/31/Android-Permission/" title="Android 动态授权那些事" target="_blank" rel="external">https://chunyang1988.github.io/2017/12/31/Android-Permission/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -430,13 +424,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2017/12/03/Docker-Introduction/" title="Docker 入门介绍"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2017/11/19/Fragment-Base/" title="Fragment基础知识">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2017/12/24/Android-Gradle-Basic-Instructions/" title="Android Gradle 基础说明">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
   </ul>

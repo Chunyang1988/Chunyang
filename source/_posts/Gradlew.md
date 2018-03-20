@@ -1,8 +1,8 @@
 ---
 title: Gradle Wrapper 常用方法讲解
 date: 2017-08-31 14:44:13
-tags: [Android]
-categories: [Android]
+tags: [Android , Gradle]
+categories: [Android , Gradle]
 ---
 
 Gradle是一个基于Groovy强大的构建系统，此文讲解的是Android Studio所使用的一些常用命令。至于以后慢慢学习在讲解一些Gradle基础知识。
