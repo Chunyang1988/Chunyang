@@ -16,21 +16,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Android各种SdkVersion理解 | Chunyang1988</title>
-  <meta name="description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
+  <title>Java反射机制 | Chunyang1988</title>
+  <meta name="description" content="关键字 反射 动态化  学习目标 了解 Java 反射主要类 了解 Java 反射常用功能 了解 Java 反射功能与场景  正文Java 反射是Java语言的一个很重要的特征，它使得Java具体了“动态性”。 Java 反射机制主要提供了以下功能：  在运行时判断任意一个对象所属的类。 在运行时构造任意一个类的对象。 在运行时判断任意一个类所具有的成员变量和方法。 在运行时调用任意一个对象的方法">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android各种SdkVersion理解">
-<meta property="og:url" content="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/index.html">
+<meta property="og:title" content="Java反射机制">
+<meta property="og:url" content="https://chunyang1988.github.io/2018/01/25/Reflection/index.html">
 <meta property="og:site_name" content="Chunyang1988">
-<meta property="og:description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
+<meta property="og:description" content="关键字 反射 动态化  学习目标 了解 Java 反射主要类 了解 Java 反射常用功能 了解 Java 反射功能与场景  正文Java 反射是Java语言的一个很重要的特征，它使得Java具体了“动态性”。 Java 反射机制主要提供了以下功能：  在运行时判断任意一个对象所属的类。 在运行时构造任意一个类的对象。 在运行时判断任意一个类所具有的成员变量和方法。 在运行时调用任意一个对象的方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-19T08:30:14.698Z">
+<meta property="og:updated_time" content="2018-04-25T07:45:31.172Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android各种SdkVersion理解">
-<meta name="twitter:description" content="关键字 minSdkVersion compileSdkVersion targetSdkVersion  学习目标了解各种sdkVersion具体意思。 正文Google 官方发布文章 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有翻译 minSdkVersion设置应用可运行最低版本，如果系统的">
+<meta name="twitter:title" content="Java反射机制">
+<meta name="twitter:description" content="关键字 反射 动态化  学习目标 了解 Java 反射主要类 了解 Java 反射常用功能 了解 Java 反射功能与场景  正文Java 反射是Java语言的一个很重要的特征，它使得Java具体了“动态性”。 Java 反射机制主要提供了以下功能：  在运行时判断任意一个对象所属的类。 在运行时构造任意一个类的对象。 在运行时判断任意一个类所具有的成员变量和方法。 在运行时调用任意一个对象的方法">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/index.html">
+  <link rel="canonical" href="https://chunyang1988.github.io/2018/01/25/Reflection/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Chunyang1988" type="application/atom+xml">
   
@@ -295,14 +295,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Android-SdkVersion" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Reflection" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Android各种SdkVersion理解
+      Java反射机制
     </h1>
   
 
@@ -310,8 +310,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2017/11/09/Android-SdkVersion/" class="article-date">
-	  <time datetime="2017-11-09T08:26:33.000Z" itemprop="datePublished">2017-11-09</time>
+	<a href="/2018/01/25/Reflection/" class="article-date">
+	  <time datetime="2018-01-25T07:41:31.000Z" itemprop="datePublished">2018-01-25</time>
 	</a>
 </span>
         
@@ -331,25 +331,62 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/11/09/Android-SdkVersion/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/01/25/Reflection/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
         <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
-<li>minSdkVersion</li>
-<li>compileSdkVersion</li>
-<li>targetSdkVersion</li>
+<li>反射</li>
+<li>动态化</li>
 </ul>
-<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><p>了解各种sdkVersion具体意思。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Google 官方发布<a href="https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd#.egywqatjg" target="_blank" rel="external">文章</a> 解析compileSdkVersion、minSdkVersion 以及 targetSdkVersion 的含义，以及合理设置各个值的意义，还有<a href="https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/" target="_blank" rel="external">翻译</a></p>
-<h3 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h3><p>设置应用可运行最低版本，如果系统的 API 高于该值，则系统会阻止程序安装。</p>
-<h3 id="compileSdkVersion"><a href="#compileSdkVersion" class="headerlink" title="compileSdkVersion"></a>compileSdkVersion</h3><p>设置编辑版本，也就是告诉 Gradle 用哪个 Android SDK 版本编译你的应用，一般都是选择最新的SDK。</p>
-<p>当你修改了 compileSdkVersion 的时候，可能会出现新的编译警告、编译错误，但新的 compileSdkVersion 不会被包含到 APK 中：它纯粹只是在编译的时候使用。（你真的应该修复这些警告，他们的出现一定是有原因的）。</p>
-<p>在这里需要注意的是，编译报错的时候，一定要得到注意，根据提示来做兼容设置，例如判断Build.VERSION_SDK_INT常量表示当前Android设备的版本号来比对，使用不同的兼容方案。</p>
-<h3 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h3><p>targetSdkVersion 是 Android 提供向前兼容的主要依据，<strong>在应用的 targetSdkVersion 没有更新之前系统不会应用最新的行为变化</strong>。</p>
-<p>怎么理解这句话呢？如果设备API等于 targetSdkVersion 就是告知当前项目已经兼容新的行为变化。</p>
+<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul>
+<li>了解 Java 反射主要类</li>
+<li>了解 Java 反射常用功能</li>
+<li>了解 Java 反射功能与场景</li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Java 反射是Java语言的一个很重要的特征，它使得Java具体了“动态性”。</p>
+<p>Java 反射机制主要提供了以下功能：</p>
+<ul>
+<li>在运行时判断任意一个对象所属的类。</li>
+<li>在运行时构造任意一个类的对象。</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法。</li>
+<li>在运行时调用任意一个对象的方法。</li>
+</ul>
+<h3 id="Java-反射主要类"><a href="#Java-反射主要类" class="headerlink" title="Java 反射主要类"></a>Java 反射主要类</h3><p>主要由一下类来实现 Java 反射机制：</p>
+<ul>
+<li>Class类：代表一个类。</li>
+<li>Field 类：代表类的成员变量（成员变量也称为类的属性）。</li>
+<li>Method类：代表类的方法。</li>
+<li>Constructor 类：代表类的构造方法。</li>
+<li>Array类：提供了动态创建数组，以及访问数组的元素的静态方法。</li>
+</ul>
+<h3 id="特殊方法讲解"><a href="#特殊方法讲解" class="headerlink" title="特殊方法讲解"></a>特殊方法讲解</h3><h4 id="getField-与-getDeclaredField"><a href="#getField-与-getDeclaredField" class="headerlink" title="getField 与 getDeclaredField"></a>getField 与 getDeclaredField</h4><p>Field代表类的成员变量</p>
+<p><strong>getField</strong><br>获取类中<code>public</code>的成员变量，包含基类（父类）的成员变量。<br><strong>getDeclaredField</strong><br>获取类中所有成员变量，但不包含基类（父类）的成员变量。</p>
+<h4 id="getMethods-与-getDeclaredMethods"><a href="#getMethods-与-getDeclaredMethods" class="headerlink" title="getMethods 与 getDeclaredMethods"></a>getMethods 与 getDeclaredMethods</h4><p>Method代表类的方法<br><strong>getMethods</strong><br>获取类中<code>public</code>的方法，包含基类（父类）的方法。<br><strong>getDeclaredMethods</strong><br>获取类中所有方法，但不包含基类（父类）的方法。</p>
+<h4 id="setAccessible"><a href="#setAccessible" class="headerlink" title="setAccessible"></a>setAccessible</h4><p>在获取为<code>private</code>修饰的的时候，需要使用此方法，才能获取到。</p>
+<h4 id="PS："><a href="#PS：" class="headerlink" title="PS："></a>PS：</h4><p>上文中用到的 <code>private</code>、<code>public</code> 都是必要条件，例如 <code>setAccessible</code> 中的 <code>private</code>中，只有 <code>private</code> 的方法或者属性才用添加，非 <code>private</code> 则无需添加。</p>
+<h2 id="实例讲解"><a href="#实例讲解" class="headerlink" title="实例讲解"></a>实例讲解</h2><p>由于内存存储情况，在获取类属性或者方法的时候，都是需要分情况考虑因此都会有<strong>非静态类</strong>与<strong>静态类</strong>区分。<br>下面的实例会用到几个类具体情况在文章最后会给出</p>
+<h3 id="获取类属性"><a href="#获取类属性" class="headerlink" title="获取类属性"></a>获取类属性</h3><p>在非静态类中，想要获取某个属性，需要知道在哪个对象中，而静态类中则只需要知道那个 Class 即可。</p>
+<h4 id="非静态类"><a href="#非静态类" class="headerlink" title="非静态类"></a>非静态类</h4><p>例如下文中的 sample 对象，通过反射就能知道 private 修饰的 tag 值是多少。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Sample sample = new Sample();</div><div class="line">Class ownerClass = sample.getClass();</div><div class="line">Field field = ownerClass.getDeclaredField(&quot;TAG&quot;);</div><div class="line">field.setAccessible(true);</div><div class="line">Object property = field.get(ownerClass);</div></pre></td></tr></table></figure>
+<p>上面例子可以提取出来这样的一个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static &lt;T&gt; T getDeclaredField(Object owner, String fieldName, boolean isAccessible) throws Exception &#123;</div><div class="line">    Class ownerClass = owner.getClass();</div><div class="line">    Field field = ownerClass.getDeclaredField(fieldName);</div><div class="line">    field.setAccessible(isAccessible);</div><div class="line">    return (T) field.get(owner);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h4><p>在静态类中，由于内存情况，因此无需知道对象，只需要知道那个 class 即可获取到想要的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Class ownerClass = Sample.class;</div><div class="line">Field field = ownerClass.getDeclaredField(&quot;TAG&quot;);</div><div class="line">field.setAccessible(true);</div><div class="line">Object property = field.get(ownerClass);</div></pre></td></tr></table></figure>
+<p>上面例子可以提取出来这样的一个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static &lt;T&gt; T getDeclaredField(Class cls, String fieldName, boolean isAccessible) throws Exception &#123;</div><div class="line">    Field field = cls.getDeclaredField(fieldName);</div><div class="line">    field.setAccessible(isAccessible);</div><div class="line">    return (T) field.get(cls);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="执行类属性"><a href="#执行类属性" class="headerlink" title="执行类属性"></a>执行类属性</h3><p>在非静态类中，想要执行某个方法，需要知道在哪个对象中，而静态类中则只需要知道那个 Class 即可。</p>
+<h4 id="非静态类-1"><a href="#非静态类-1" class="headerlink" title="非静态类"></a>非静态类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Sample sample = new Sample();</div><div class="line">Class ownerClass = sample.getClass();</div><div class="line">Object arg = &quot;newName&quot;;</div><div class="line">Class argCls = arg.getClass();</div><div class="line">Method method = ownerClass.getDeclaredMethod(&quot;getSample&quot;, argCls);</div><div class="line">method.setAccessible(true);</div><div class="line">Object object = method.invoke(sample, arg);</div><div class="line">System.out.println(&quot;类属性：&quot; + object);</div></pre></td></tr></table></figure>
+<h4 id="静态类-1"><a href="#静态类-1" class="headerlink" title="静态类"></a>静态类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Class ownerClass = Sample.class;</div><div class="line">Method method = ownerClass.getDeclaredMethod(&quot;getName&quot;);</div><div class="line">method.setAccessible(true);</div><div class="line">Object property = method.invoke(ownerClass);</div><div class="line">System.out.println(property);</div></pre></td></tr></table></figure>
+<h3 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h3><p>实例化对象需要区分<strong>带参数</strong>与<strong>无参数</strong></p>
+<h4 id="带参数"><a href="#带参数" class="headerlink" title="带参数"></a>带参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Class newClass = Sample.class;</div><div class="line">Object arg = &quot;SampleName&quot;;</div><div class="line">Class argClass = arg.getClass();</div><div class="line">Constructor cons = newClass.getConstructor(argClass);</div><div class="line">Sample sample = (Sample) cons.newInstance(arg);</div><div class="line">System.out.println(sample.name);</div></pre></td></tr></table></figure>
+<h4 id="无参数"><a href="#无参数" class="headerlink" title="无参数"></a>无参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Class newClass = Sample.class;</div><div class="line">Sample sample = (Sample) newClass.newInstance();</div><div class="line">System.out.println(sample.name);</div></pre></td></tr></table></figure>
+<h3 id="文中实例代码"><a href="#文中实例代码" class="headerlink" title="文中实例代码"></a>文中实例代码</h3><p>Demo类代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Demo &#123;</div><div class="line">    private int code = 1;</div><div class="line">    public String versionName = &quot;VersionName&quot;;</div><div class="line">    protected int sdkVersion = 21;</div><div class="line">    int minSdkVersion = 14;</div><div class="line"></div><div class="line">    private String getVersionName() &#123;</div><div class="line">        return versionName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getSdkVersion() &#123;</div><div class="line">        return sdkVersion;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int getMinSdkVersion() &#123;</div><div class="line">        return minSdkVersion;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Sample类代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class Sample extends Demo &#123;</div><div class="line"></div><div class="line"></div><div class="line">    public Sample() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Sample(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static final String TAG = &quot;SampleTag&quot;;</div><div class="line"></div><div class="line">    public String name = &quot;Sample.Demo&quot;;</div><div class="line">    private int age = 10;</div><div class="line"></div><div class="line">    boolean isSample = true;</div><div class="line"></div><div class="line">    private String getSample(String name) &#123;</div><div class="line">        System.out.println(&quot;getSample有参数&quot;);</div><div class="line">        return &quot;SampleName:&quot; + name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private String getSample() &#123;</div><div class="line">        System.out.println(&quot;getSample无参数&quot;);</div><div class="line">        return &quot;Sample&quot;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static String getName() &#123;</div><div class="line">        System.out.println(&quot;getName静态方法&quot;);</div><div class="line">        return &quot;Name&quot;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -359,7 +396,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/" title="Android各种SdkVersion理解" target="_blank" rel="external">https://chunyang1988.github.io/2017/11/09/Android-SdkVersion/</a>
+      <a href="https://chunyang1988.github.io/2018/01/25/Reflection/" title="Java反射机制" target="_blank" rel="external">https://chunyang1988.github.io/2018/01/25/Reflection/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -407,13 +444,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2017/11/19/Fragment-Base/" title="Fragment基础知识"><i class="icon icon-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2017/10/30/Android-SmartScale/" title="Android 屏幕适配">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/01/12/mac-command/" title="Mac 终端常用命令">下一篇&nbsp;&nbsp;<i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
   </ul>
